@@ -26,7 +26,7 @@ GiftCard.prototype.addTransaction = function(tx)
     if(newBalance< 0)
         return false;
     this.balance = newBalance;
-    this.transactions.append(tx);
+    this.transactions.push(tx);
     this.modified = Date();
 
     return true;
