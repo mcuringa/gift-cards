@@ -6,8 +6,7 @@
  * data
  */
 
-var GiftCard = function() 
-{
+var GiftCard = function () {
     this.id = 0;
     this.firstName = "";
     this.lastName = "";
@@ -20,8 +19,7 @@ var GiftCard = function()
     this.modified = Date();
 };
 
-GiftCard.prototype.toString = function()
-{
+GiftCard.prototype.toString = function () {
     return "<(id: " + this.id + ") " + this.firstName + " " + this.lastName + ", $" + this.balance + ">";
 }
 
@@ -58,15 +56,42 @@ data.findAll = function()
     return testData;
 };
 
+
+
 data.findByName = function(name)
 {
-    //return all of the gift cards
+    for (var i=0; i < testData.length; i++){
+    var namecat = testData[i].firstName + " " + testData[i].lastName
+    if(namecat == name){
+        console.log(testData[i]);
+        return testData[i];
+        
+//        var tempbal = 0;
+//        tempbal = tempbal + testData[i].balance;
+    
+    }
+}
+//    console.log(tempbal);
+//    return tempbal;
+
 };
+
+
+
+
+
 
 data.findByPhone = function(phone)
 {
-
+  for (var i=0; i < testData.length; i++){
+    var phonecat = testData[i].phone;
+    if(namecat == phone){
+        console.log(testData[i]);
+        return testData[i];
 }
+  }
+};
+
 
 data.search = function(query)
 {
@@ -88,7 +113,7 @@ data.createCard = function(name, amt)
     card.id = data.counter;
     card.firstName = name.split(" ")[0];
     card.lastName = name.split(" ")[1];
-    card.addTransaction(new Transaction(amt, "purchase"));
+    card.addTransaction(new Transaction(amt, "card-purchase"));
     return card;
 };
 
@@ -99,12 +124,21 @@ var testData =
     data.createCard("Kai Williams", 10),
     data.createCard("Ryan Sobeck", 5),
     data.createCard("Filiz C.", 20),
-    data.createCard("Austen Cortese", 10)
+    data.createCard("Austen Cortese", 10),
+    data.createCard("Robby Lucia", 30)
 ];
 
 
 
 
 
+//for (var i=0; i < testData.length; i++){
+//    console.log(testData[i]);
+//};
+
+//console.log(data);
+
+data.findByName("Robby Lucia");
 
 
+//console.log(testData[1].firstName);
