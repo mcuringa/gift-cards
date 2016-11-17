@@ -20,6 +20,11 @@ var GiftCard = function()
     this.modified = Date();
 };
 
+GiftCard.prototype.toString = function()
+{
+    return "<(id: " + this.id + ") " + this.firstName + " " + this.lastName + ", $" + this.balance + ">";
+}
+
 GiftCard.prototype.addTransaction = function(tx) 
 {
     var newBalance = this.balance + tx.amt;
@@ -81,7 +86,8 @@ data.createCard = function(name, amt)
     data.counter += 1;
     var card = new GiftCard();
     card.id = data.counter;
-    card.name = name;
+    card.firstName = name.split(" ")[0];
+    card.lastName = name.split(" ")[1];
     card.addTransaction(new Transaction(amt, "purchase"));
     return card;
 };
