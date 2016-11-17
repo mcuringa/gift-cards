@@ -17,6 +17,12 @@ function showView(id)
     	case "list":
     		showList();
     		break;
+        case "detail":
+            showDetail();
+            break;
+        default:
+            alert("No view implemented for " + id);
+
     }
 
 }
@@ -27,14 +33,14 @@ function registerListeners()
     $("#top-nav button").click(function(e) {
     	var btn = $(e.target);
     	var id = btn.data("target");
+        console.log(id);
     	showView(id);
     });
 }
 
 function main()
 {
-  
-
+    registerListeners();
     showView("home");
 }
 
