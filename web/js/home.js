@@ -7,7 +7,9 @@ function alphabet()
 	console.log("alphabet");
 
     var container = $("<div id='letter-buttons'></div>");
-    var letters = ["A","B","C","D","E","F","G","H","I","J","K"]; //ryan can finish this :)
+    var letters = ["A","B","C","D","E","F","G","H",
+    "I","J","K","L","M","N","O","P","Q","R",
+    "S","T","U","V","W","X","Y","Z"];
 
     for(var i=0;i<letters.length;i++)
     {

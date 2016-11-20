@@ -1,0 +1,55 @@
+body
+{
+	background: #b3cccc;
+	color: #EEE;
+	text-align: center;
+	font: normal 9pt Tahoma;
+}
+
+h1
+{
+	text-align: center;
+	color: black;
+	font: normal Tahoma;
+}
+
+#top-nav
+{
+	margin: 10px auto 10px auto;
+	text-align: center;
+}
+
+#top-nav button
+{
+	width: 200px;
+	height: 50px;
+	margin-left: 10px; 
+	margin-right:10px;
+}
+
+#home
+{
+	margin: 10px auto 10px auto;
+	text-align: center;
+	width: 45%;
+	float: left;
+	border-right: medium solid lightgrey;
+}
+
+#home button
+{
+	width: 150px;
+	height: 75px;
+	margin: 5px;
+	font: normal Tahoma;
+}
+
+.view
+{
+	display: block;
+}
+
+.hidden
+{
+	display: none;
+}
