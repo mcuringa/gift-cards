@@ -93,7 +93,7 @@ data.findByPhone = function(phone)
     if(phoneCat == testData[i].phone){
         
         console.log(testData[i]);
-        return  $("#main").append("phone number" + testData[i].toString());
+        return  $("#main").html("phone number" + testData[i].toString());
 	} 
   }
 };
@@ -103,7 +103,14 @@ data.search = function(query)
 {
     // version 1    
     //check query against name, email, phone
-}
+
+
+    	data.findByPhone(query)
+   
+    	data.findByName(query)
+    	return;
+    
+};
 
 
 
@@ -137,8 +144,9 @@ var testData =
 ];
 
 
-data.findByName("Kai Williams");
-data.findByPhone("222 2-222222");
-data.findAll();
+//data.findByName("Kai Williams");
+//data.findByPhone("222 2-222222");
+//data.findAll();
+data.search("kai williams");
 
 
