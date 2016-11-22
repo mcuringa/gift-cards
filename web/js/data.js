@@ -19,9 +19,19 @@ var GiftCard = function () {
     this.modified = Date();
 };
 
-GiftCard.prototype.toString = function () {
+GiftCard.prototype.toString = function () 
+{
     return "<(id: " + this.id + ") " + this.firstName + " " + this.lastName + ", $" + this.balance + ">";
 }
+
+GiftCard.prototype.toJson = function () 
+{
+    var json = "";
+    json += "{";
+
+: 
+
+
 
 GiftCard.prototype.addTransaction = function(tx) 
 {
@@ -39,11 +49,12 @@ GiftCard.prototype.addTransaction = function(tx)
 GiftCard.COUNTER = 0;
 
 
-var Transaction = function(amt, type)
+var Transaction = function(amt, type, barrista)
 {
     this.amt = amt;
     this.type = type;
     this.created = Date();
+    this.barrista = barrista;
 
 }
 
@@ -71,6 +82,45 @@ data.phones = {};
 data.db = localStorage;
 
 /**
+ * initialize the database
+ * by loading all of the
+ * giftcards and indexs
+ * into memory
+ */
+data.init = function()
+{
+    data.ids = data.load("ids");
+
+    data.emails = data.load("emails");
+    data.phones = data.load("phones");
+    data.cards = {};
+    for(var i=0;i<data.ids.length;i++)
+    {
+        var id = data.ids[i];
+        data.cards[id] = data.load("card_" + id);
+    }
+}
+
+data.store = function(key, val)
+{
+    var str = JSON.stringify(val);
+    console.log("storing: " + key);
+    console.log("json: " + str);
+
+    data.db.setItem(key, str);
+    return str;
+}
+
+data.load = function(key)
+{
+    var val = data.db.getItem(key);
+    console.log("loading: " + key);
+    console.log("parsing: " + val);
+    return JSON.parse(val);
+}
+
+
+/**
  * this function updates all of the 
  * database indices.
  * they are only updated in memory
@@ -79,16 +129,16 @@ data.db = localStorage;
  */
 data.index = function(gc)
 {
-    data.ids.append(gc.id);
+    data.ids.push(gc.id);
     data.emails[gc.email] = gc.id;
     data.phones[gc.phone] = gc.id;
 }
 
 data.saveIndex = function()
 {
-    data.db.setItem("ids", data.ids);
-    data.db.setItem("phones", data.emails);
-    data.db.setItem("phones", data.phones);
+    data.store("ids", data.ids);
+    data.store("emails", data.emails);
+    data.store("phones", data.phones);
 }
 
 /**
@@ -105,7 +155,7 @@ data.save = function(gc)
         gc.id = data.nextId();
     }
     data.index(gc);
-    data.db.setItem("card_" + gc);
+    data.db.setItem("card_" + gc.id, gc);
     data.saveIndex();
     return gc.id;
 };
@@ -119,24 +169,29 @@ data.nextId = function()
 
 data.findAll = function()
 {
-	console.log(testData);
     $("#main").html(testData.toString());
     return testData;
 
 };
+
+data.get = function(id)
+{
+    var gc = data.cards[id];
+    return gc;
+}
 
 data.findByName = function(name)
 {
     for (var i=0; i < testData.length; i++){
     var namecat = testData[i].firstName + " " + testData[i].lastName
 	    if(namecat == name){
-	        console.log(testData[i]);
 	        return  $("#main").html("name" + testData[i].toString());
 	    }
 	}
 
 
 };
+
 /*
 data.findByName = function(name){
 	var show = _.findWhere(testData,{name: name}); 
@@ -153,12 +208,10 @@ data.findByPhone = function(phone){
 */
 data.findByPhone = function(phone)
 {
-	var phoneCat=phone.replace(/-|\s/g,"");
-		console.log(phoneCat);
+  var phoneCat=phone.replace(/-|\s/g,"");
   for (var i=0; i < testData.length; i++){
-    if(phoneCat == testData[i].phone){
-        
-        console.log(testData[i]);
+    if(phoneCat == testData[i].phone)
+    {  
         return  $("#main").append("phone number" + testData[i].toString());
 	} 
   }
