@@ -33,9 +33,10 @@ GiftCard.prototype.addTransaction = function(tx)
     this.modified = Date();
 
     return true;
-
-
 };
+
+// static counter of unique Ids
+GiftCard.COUNTER = 0;
 
 
 var Transaction = function(amt, type)
@@ -49,7 +50,72 @@ var Transaction = function(amt, type)
 
 var data = {};
 
-data.counter = 0;
+//---------------------------------- the basic data structures and indices
+//all of the gift cards, indexed by id
+data.cards = {};
+
+//the counterId sequence
+data.counter = 1;
+
+//list of all of the Ids stored
+data.ids = [];
+
+//index of emails
+data.emails = {};
+
+//index of phone numbers
+data.phones = {};
+
+//make the database a property of data
+//so that it can be changed if needed
+data.db = localStorage;
+
+/**
+ * this function updates all of the 
+ * database indices.
+ * they are only updated in memory
+ * until `save()` is called.
+ * return null
+ */
+data.index = function(gc)
+{
+    data.ids.append(gc.id);
+    data.emails[gc.email] = gc.id;
+    data.phones[gc.phone] = gc.id;
+}
+
+data.saveIndex = function()
+{
+    data.db.setItem("ids", data.ids);
+    data.db.setItem("phones", data.emails);
+    data.db.setItem("phones", data.phones);
+}
+
+/**
+ * save a single card to localStorage
+ * also, update all in-memory and saved
+ * indices.
+ * return the new id
+ */
+data.save = function(gc)
+{
+    //save the card to the DB, return the saved object
+    if(gc.id ==0)
+    {
+        gc.id = data.nextId();
+    }
+    data.index(gc);
+    data.db.setItem("card_" + gc);
+    data.saveIndex();
+    return gc.id;
+};
+
+
+data.nextId = function() 
+{
+    data.counter++;
+    return data.counter;
+}
 
 data.findAll = function()
 {
@@ -102,21 +168,14 @@ data.findByPhone = function(phone)
 data.search = function(query)
 {
     // version 1    
-    //check query against name, email, phone
+    //check query against name, email, phone, etc.
 }
-
-
-
-data.save = function(gc)
-{
-    //save the card to the DB, return the saved object
-};
 
 data.createCard = function(name, amt, phone)
 {
-    data.counter += 1;
     var card = new GiftCard();
-    card.id = data.counter;
+    // card.id = data.nextId();
+    card.id = 0; //id should be zero until saved
     card.firstName = name.split(" ")[0];
     card.lastName = name.split(" ")[1];
     card.phone = phone;
@@ -129,11 +188,11 @@ data.createCard = function(name, amt, phone)
 
 var testData = 
 [
-    data.createCard("Kai Williams", 10, 5555555555),
-    data.createCard("Ryan Sobeck", 5, 8888888888),
-    data.createCard("Filiz C.", 20, 9999999999),
-    data.createCard("Austen Cortese", 10, 2222222222),
-    data.createCard("Robby Lucia", 30, 4444444444)
+    data.createCard("Kai Williams", 10, "5555555555"),
+    data.createCard("Ryan Sobeck", 5, "8888888888"),
+    data.createCard("Filiz C.", 20, "9999999999"),
+    data.createCard("Austen Cortese", 10, "2222222222"),
+    data.createCard("Robby Lucia", 30, "4444444444")
 ];
 
 
