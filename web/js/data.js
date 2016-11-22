@@ -53,42 +53,48 @@ data.counter = 0;
 
 data.findAll = function()
 {
+	console.log(testData);
+    $("#main").html(testData.toString());
     return testData;
+
 };
-
-
 
 data.findByName = function(name)
 {
     for (var i=0; i < testData.length; i++){
     var namecat = testData[i].firstName + " " + testData[i].lastName
-    if(namecat == name){
-        console.log(testData[i]);
-        return testData[i];
-        
-//        var tempbal = 0;
-//        tempbal = tempbal + testData[i].balance;
-    
-    }
-}
-//    console.log(tempbal);
-//    return tempbal;
+	    if(namecat == name){
+	        console.log(testData[i]);
+	        return  $("#main").html("name" + testData[i].toString());
+	    }
+	}
 
+
+};
+/*
+data.findByName = function(name){
+	var show = _.findWhere(testData,{name: name}); 
+	 console.log(show);
+	 return show;
+};
+data.findByPhone = function(phone){
+	var show = _.findWhere(testData.shows, {phone: phone}); 
+	 console.log(show);
+	 return show;
 };
 
 
-
-
-
-
+*/
 data.findByPhone = function(phone)
 {
+	var phoneCat=phone.replace(/-|\s/g,"");
+		console.log(phoneCat);
   for (var i=0; i < testData.length; i++){
-    var phonecat = testData[i].phone;
-    if(namecat == phone){
+    if(phoneCat == testData[i].phone){
+        
         console.log(testData[i]);
-        return testData[i];
-}
+        return  $("#main").append("phone number" + testData[i].toString());
+	} 
   }
 };
 
@@ -106,14 +112,16 @@ data.save = function(gc)
     //save the card to the DB, return the saved object
 };
 
-data.createCard = function(name, amt)
+data.createCard = function(name, amt, phone)
 {
     data.counter += 1;
     var card = new GiftCard();
     card.id = data.counter;
     card.firstName = name.split(" ")[0];
     card.lastName = name.split(" ")[1];
+    card.phone = phone;
     card.addTransaction(new Transaction(amt, "card-purchase"));
+
     return card;
 };
 
@@ -121,24 +129,16 @@ data.createCard = function(name, amt)
 
 var testData = 
 [
-    data.createCard("Kai Williams", 10),
-    data.createCard("Ryan Sobeck", 5),
-    data.createCard("Filiz C.", 20),
-    data.createCard("Austen Cortese", 10),
-    data.createCard("Robby Lucia", 30)
+    data.createCard("Kai Williams", 10, 5555555555),
+    data.createCard("Ryan Sobeck", 5, 8888888888),
+    data.createCard("Filiz C.", 20, 9999999999),
+    data.createCard("Austen Cortese", 10, 2222222222),
+    data.createCard("Robby Lucia", 30, 4444444444)
 ];
 
 
+data.findByName("Kai Williams");
+data.findByPhone("222 2-222222");
+data.findAll();
 
 
-
-//for (var i=0; i < testData.length; i++){
-//    console.log(testData[i]);
-//};
-
-//console.log(data);
-
-data.findByName("Robby Lucia");
-
-
-//console.log(testData[1].firstName);
