@@ -23,6 +23,31 @@ GiftCard.prototype.toString = function ()
 {
     return "<(id: " + this.id + ") " + this.firstName + " " + this.lastName + ", $" + this.balance + ">";
 }
+/*create a new gift card w new operator, populate all fields that say this., dates are strings, 
+use date constructor, transaction use (add transaction)*/
+GiftCard.prototype.parseJson = function(json) 
+{
+    var data = JSON.parse(json);
+    this.id = data["id"];
+    this.firstName =data["firstName"];
+    this.lastName =data["lastName"]
+    this.notes = "";
+    this.balance = 0;
+    this.email = "";
+    this.phone = "";
+    this.transactions = [];
+    this.created = new Date (this.created.());
+    this.modified = new Date (this.modified.()); 
+    var txData = data["transactions"];
+    for( var i = 0; i < tx.length; i++)
+    {
+        var tx = new Transaction();
+        tx.parseJson(txData[i]);
+        this.addTransaction(tx)
+
+    }
+}
+
 
 GiftCard.prototype.toJson = function () 
 {
@@ -105,6 +130,22 @@ Transaction.prototype.toJson = function()
 
     return json;  
 }
+
+Transaction.prototype.parseJson = function(json)
+{
+    var data = JSON.parse(json);
+    this.amt = data["amt"];
+    this.type = data["type"];
+    this.created = new Date(data.key["created"])
+    this.barrista = barrista["barrista"]
+
+
+
+
+
+}
+
+
 
 
 var data = {};
