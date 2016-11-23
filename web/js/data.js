@@ -26,10 +26,41 @@ GiftCard.prototype.toString = function ()
 
 GiftCard.prototype.toJson = function () 
 {
-    var json = "";
-    json += "{";
+    var json = ""
+    json += "{"
+    json += "id: "
+    json += this.id +","
+    json += "firstName: "
+    json += this.firstName+","
+    json += "lastName: "
+    json += this.lastName+","
+    json += "notes: "
+    json += this.notes+","
+  //json += "balance: "
+  //json += this.balance+","
+    json += "email: "
+    json += this.email+","
+    json += "phone: "
+    json += this.phone+","
+  //json += "transactions: "
+  //json += this.transactions
+    json += "Date Created: "
+    json += this.created.toJSON()+","
+    json += "Date Modified: "
+    json += this.modified.toJSON()+","
+    json += "transactions: ["
+    for(var i=0;i<this.transactions.length; i++)
+    {
+        json += this.transactions[i].toJson();
+        json += ","
+    }
+    json += "]"
+    json += " }"
 
-: 
+    
+
+    return json;
+};
 
 
 
@@ -56,6 +87,23 @@ var Transaction = function(amt, type, barrista)
     this.created = Date();
     this.barrista = barrista;
 
+
+}
+Transaction.prototype.toJson = function()
+{
+    var json = "";
+        json += "{"
+        json += "amount: " 
+        json += this.amt + ", " 
+        json += "type: "  
+        json += this.type + ", " 
+        json += "created: " 
+        json += this.created.toJSON()+ ", " 
+        json += "barrista: "   
+        json += this.barrista    
+        json += "}"
+
+    return json;  
 }
 
 
