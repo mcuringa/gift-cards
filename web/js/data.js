@@ -54,42 +54,48 @@ data.counter = 0;
 
 data.findAll = function()
 {
+	console.log(testData);
+    $("#main").html(testData.toString());
     return testData;
+
 };
-
-
 
 data.findByName = function(name)
 {
     for (var i=0; i < testData.length; i++){
     var namecat = testData[i].firstName + " " + testData[i].lastName
-    if(namecat == name){
-        console.log(testData[i]);
-        return testData[i];
-        
-//        var tempbal = 0;
-//        tempbal = tempbal + testData[i].balance;
-    
-    }
-}
-//    console.log(tempbal);
-//    return tempbal;
+	    if(namecat == name){
+	        console.log(testData[i]);
+	        return  $("#main").html("name" + testData[i].toString());
+	    }
+	}
 
+
+};
+/*
+data.findByName = function(name){
+	var show = _.findWhere(testData,{name: name}); 
+	 console.log(show);
+	 return show;
+};
+data.findByPhone = function(phone){
+	var show = _.findWhere(testData.shows, {phone: phone}); 
+	 console.log(show);
+	 return show;
 };
 
 
-
-
-
-
+*/
 data.findByPhone = function(phone)
 {
+	var phoneCat=phone.replace(/-|\s/g,"");
+		console.log(phoneCat);
   for (var i=0; i < testData.length; i++){
-    var phonecat = testData[i].phone;
-    if(namecat == phone){
+    if(phoneCat == testData[i].phone){
+        
         console.log(testData[i]);
-        return testData[i];
-}
+        return  $("#main").append("phone number" + testData[i].toString());
+	} 
   }
 };
 
@@ -116,6 +122,7 @@ data.createCard = function(name, amt, phone)
     card.lastName = name.split(" ")[1];
     card.phone = phone;
     card.addTransaction(new Transaction(amt, "card-purchase"));
+
     return card;
 };
 
@@ -129,19 +136,12 @@ var testData =
     data.createCard("Austen Cortese", 10, "212-555-1234"),
     data.createCard("Robby Lucia", 30, "212-555-1235"),
     data.createCard("Alexandra Turturro", 15, "212-555-1236")
+
 ];
 
 
+data.findByName("Kai Williams");
+data.findByPhone("222 2-222222");
+data.findAll();
 
 
-
-//for (var i=0; i < testData.length; i++){
-//    console.log(testData[i]);
-//};
-
-//console.log(data);
-
-data.findByName("Robby Lucia");
-
-
-//console.log(testData[1].firstName);
