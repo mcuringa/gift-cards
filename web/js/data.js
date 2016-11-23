@@ -43,6 +43,7 @@ var Transaction = function(amt, type)
     this.amt = amt;
     this.type = type;
     this.created = Date();
+    //this.burrista= burrista; 
 
 }
 
@@ -106,13 +107,14 @@ data.save = function(gc)
     //save the card to the DB, return the saved object
 };
 
-data.createCard = function(name, amt)
+data.createCard = function(name, amt, phone)
 {
     data.counter += 1;
     var card = new GiftCard();
     card.id = data.counter;
     card.firstName = name.split(" ")[0];
     card.lastName = name.split(" ")[1];
+    card.phone = phone;
     card.addTransaction(new Transaction(amt, "card-purchase"));
     return card;
 };
@@ -121,11 +123,12 @@ data.createCard = function(name, amt)
 
 var testData = 
 [
-    data.createCard("Kai Williams", 10),
-    data.createCard("Ryan Sobeck", 5),
-    data.createCard("Filiz C.", 20),
-    data.createCard("Austen Cortese", 10),
-    data.createCard("Robby Lucia", 30)
+    data.createCard("Kai Williams", 10, "212-555-1231"),
+    data.createCard("Ryan Sobeck", 5, "212-555-1232"),
+    data.createCard("Filiz C.", 20, "212-555-1233"),
+    data.createCard("Austen Cortese", 10, "212-555-1234"),
+    data.createCard("Robby Lucia", 30, "212-555-1235"),
+    data.createCard("Alexandra Turturro", 15, "212-555-1236")
 ];
 
 
