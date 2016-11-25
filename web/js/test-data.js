@@ -43,6 +43,11 @@ function testCreateCard()
     test.assertEqual(card.id, 0);
     test.assertTrue(typeof card.created == typeof new Date(), "created not of type Date, found type: " + typeof card.created);
     test.assertEqual(card.modified.getFullYear(), new Date().getFullYear());
+    test.assertEqual(card.transactions.length, 1);
+    var tx = card.transactions[0];
+    test.assertEqual(tx.amt, 40);
+    test.assertEqual(tx.type, "init");
+    test.assertEqual(tx.barrista, "AM");
 
 }
 
@@ -72,11 +77,13 @@ function testGet()
     log("testing get");
     data.db.clear();
     var card = buildTestCard();
-
-
     var id = data.save(card);
+    log(data.cards);
+    // test.assertEqual(1, data.cards.length);
+
     data.init();
     var card2 = data.get(id);
+    test.assertTrue(card2, "get() return null");
     test.assertEqual(card.firstName, card2.firstName, "names didn't match after DB load");
 }
 
@@ -85,9 +92,9 @@ function testJSON()
     log("testing json");
     var card = buildTestCard();
     var json = card.toJSON();
-    var j2 = JSON.stringify(card);
-    // test.assertEqual(json, j2);
-    console.log(j2);
+    var card2 = new GiftCard();
+    card2.parseJSON(json);
+    test.assertEqual(card.id, card2.id);
 
 
 }
@@ -110,17 +117,17 @@ function runTests()
     testJSON();
     log("passed testJSON");
     
-    // testCreateCard();
-    // log("passed testCreateCard");
+    testCreateCard();
+    log("passed testCreateCard");
     
-    // testSaveCard();
-    // log("passed testSaveCard");
+    testSaveCard();
+    log("passed testSaveCard");
 
-    // testInit();
-    // log("passed testInit");
+    testInit();
+    log("passed testInit");
     
-    // testGet();
-    // log("passed testGet");
+    testGet();
+    log("passed testGet");
 }
 
 runTests();

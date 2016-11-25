@@ -19,16 +19,11 @@ var GiftCard = function () {
     this.modified = new Date();
 };
 
-// GiftCard.prototype.toString = function () 
-// {
-//     return "<(id: " + this.id + ") " + this.firstName + " " + this.lastName + ", $" + this.balance + ">";
-// }
-
 /**
  * create a new gift card w new operator, populate all fields that say this.,
  * dates are strings, use date constructor, transaction use (add transaction)
  */
-GiftCard.prototype.parseJson = function(json) 
+GiftCard.prototype.parseJSON = function(json) 
 {
     var data = JSON.parse(json);
     this.id = data["id"];
@@ -45,7 +40,8 @@ GiftCard.prototype.parseJson = function(json)
     for( var i = 0; i < txData.length; i++)
     {
         var tx = new Transaction();
-        tx.parseJson(txData[i]);
+        // tx.parseJSON(txData[i]);
+        tx.init(txData[i]);
         this.addTransaction(tx);
 
     }
@@ -58,7 +54,8 @@ GiftCard.prototype.toJSON = function ()
     var txJSON = new Array(this.transactions.length);
     for(var i=0;i<this.transactions.length; i++)
     {
-        txJSON[i] = this.transactions[i].toJSON();
+        var tx = this.transactions[i].toJSON();
+        txJSON[i] = JSON.parse(tx);
     }
 
 
@@ -99,7 +96,7 @@ var Transaction = function(amt, type, barrista)
     this.type = type;
     this.created = new Date();
     this.barrista = barrista;
-}
+};
 
 Transaction.prototype.toJSON = function()
 {
@@ -111,18 +108,26 @@ Transaction.prototype.toJSON = function()
         created: this.created,
         barrista: this.barrista
     };
+    console.log(JSON.stringify(json));
+    return JSON.stringify(json);
+};
 
-    return json;
-}
-
-Transaction.prototype.parseJson = function(json)
+Transaction.prototype.parseJSON = function(json)
 {
     var data = JSON.parse(json);
+    this.init(data);
+};
+
+Transaction.prototype.init = function(data)
+{
     this.amt = data["amt"];
     this.type = data["type"];
-    this.created = new Date(data.key["created"])
-    this.barrista = barrista["barrista"]
-}
+    this.created = new Date(data["created"]);
+    this.barrista = data["barrista"];
+
+};
+
+
 
 
 
@@ -162,10 +167,14 @@ data.init = function()
     data.emails = data.load("emails");
     data.phones = data.load("phones");
     data.cards = {};
+
+    console.log("ids: " + data.ids);
     for(var i=0;i<data.ids.length;i++)
     {
         var id = data.ids[i];
-        data.cards[id] = data.load("card_" + id);
+        var card = new GiftCard();
+        card.parseJSON(data.load("card_" + id));
+        data.cards[id] = card;
     }
 }
 
@@ -223,6 +232,7 @@ data.save = function(gc)
         gc.id = data.nextId();
     }
     data.index(gc);
+    console.log(data.ids);
     data.db.setItem("card_" + gc.id, gc);
     data.saveIndex();
     return gc.id;
