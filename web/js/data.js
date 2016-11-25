@@ -15,79 +15,67 @@ var GiftCard = function () {
     this.email = "";
     this.phone = "";
     this.transactions = [];
-    this.created = Date();
-    this.modified = Date();
+    this.created = new Date();
+    this.modified = new Date();
 };
 
-GiftCard.prototype.toString = function () 
-{
-    return "<(id: " + this.id + ") " + this.firstName + " " + this.lastName + ", $" + this.balance + ">";
-}
-/*create a new gift card w new operator, populate all fields that say this., dates are strings, 
-use date constructor, transaction use (add transaction)*/
+// GiftCard.prototype.toString = function () 
+// {
+//     return "<(id: " + this.id + ") " + this.firstName + " " + this.lastName + ", $" + this.balance + ">";
+// }
+
+/**
+ * create a new gift card w new operator, populate all fields that say this.,
+ * dates are strings, use date constructor, transaction use (add transaction)
+ */
 GiftCard.prototype.parseJson = function(json) 
 {
     var data = JSON.parse(json);
     this.id = data["id"];
     this.firstName =data["firstName"];
-    this.lastName =data["lastName"]
+    this.lastName =data["lastName"];
     this.notes = "";
     this.balance = 0;
     this.email = "";
     this.phone = "";
     this.transactions = [];
-    this.created = new Date (this.created.());
-    this.modified = new Date (this.modified.()); 
+    this.created = new Date(data["created"]);
+    this.modified = new Date(data["modified"]); 
     var txData = data["transactions"];
-    for( var i = 0; i < tx.length; i++)
+    for( var i = 0; i < txData.length; i++)
     {
         var tx = new Transaction();
         tx.parseJson(txData[i]);
-        this.addTransaction(tx)
+        this.addTransaction(tx);
 
     }
 }
 
 
-GiftCard.prototype.toJson = function () 
+GiftCard.prototype.toJSON = function () 
 {
-    var json = ""
-    json += "{"
-    json += "id: "
-    json += this.id +","
-    json += "firstName: "
-    json += this.firstName+","
-    json += "lastName: "
-    json += this.lastName+","
-    json += "notes: "
-    json += this.notes+","
-  //json += "balance: "
-  //json += this.balance+","
-    json += "email: "
-    json += this.email+","
-    json += "phone: "
-    json += this.phone+","
-  //json += "transactions: "
-  //json += this.transactions
-    json += "Date Created: "
-    json += this.created.toJSON()+","
-    json += "Date Modified: "
-    json += this.modified.toJSON()+","
-    json += "transactions: ["
+
+    var txJSON = new Array(this.transactions.length);
     for(var i=0;i<this.transactions.length; i++)
     {
-        json += this.transactions[i].toJson();
-        json += ","
+        txJSON[i] = this.transactions[i].toJSON();
     }
-    json += "]"
-    json += " }"
 
-    
 
-    return json;
+    var json = {
+        id:  this.id ,
+        firstName:  this.firstName,
+        lastName:  this.lastName,
+        notes:  this.notes,
+        email:  this.email,
+        phone:  this.phone,
+        created:  this.created.toJSON(),
+        modified:  this.modified.toJSON(),
+        transactions: txJSON
+    };
+
+    return JSON.stringify(json);
 };
-
-
 
 GiftCard.prototype.addTransaction = function(tx) 
 {
@@ -96,7 +84,7 @@ GiftCard.prototype.addTransaction = function(tx)
         return false;
     this.balance = newBalance;
     this.transactions.push(tx);
-    this.modified = Date();
+    this.modified = new Date();
 
     return true;
 };
@@ -109,26 +97,22 @@ var Transaction = function(amt, type, barrista)
 {
     this.amt = amt;
     this.type = type;
-    this.created = Date();
+    this.created = new Date();
     this.barrista = barrista;
-
-
 }
-Transaction.prototype.toJson = function()
-{
-    var json = "";
-        json += "{"
-        json += "amount: " 
-        json += this.amt + ", " 
-        json += "type: "  
-        json += this.type + ", " 
-        json += "created: " 
-        json += this.created.toJSON()+ ", " 
-        json += "barrista: "   
-        json += this.barrista    
-        json += "}"
 
-    return json;  
+Transaction.prototype.toJSON = function()
+{
+
+    var json = 
+    {
+        amt: this.amt,
+        type: this.type,
+        created: this.created,
+        barrista: this.barrista
+    };
+
+    return json;
 }
 
 Transaction.prototype.parseJson = function(json)
@@ -138,11 +122,6 @@ Transaction.prototype.parseJson = function(json)
     this.type = data["type"];
     this.created = new Date(data.key["created"])
     this.barrista = barrista["barrista"]
-
-
-
-
-
 }
 
 

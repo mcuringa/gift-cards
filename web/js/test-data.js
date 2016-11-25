@@ -21,7 +21,15 @@ function log(msg) { console.log(msg); }
 
 function buildTestCard()
 {
-    return data.createCard("Matt Curinga", 40, "917-555-5555");
+    // return data.createCard("Matt Curinga", 40, "917-555-5555");
+    var card = new GiftCard();
+    card.id = 0;
+    card.firstName = "Matt";
+    card.lastName = "Curinga";
+    card.addTransaction(new Transaction(40, "init", "AM"));
+    card.phone = "917-555-5555";
+    return card;
+
 }
 
 function testCreateCard()
@@ -33,6 +41,8 @@ function testCreateCard()
     test.assertEqual(card.balance, 40);
     test.assertEqual(card.phone, "917-555-5555");
     test.assertEqual(card.id, 0);
+    test.assertTrue(typeof card.created == typeof new Date(), "created not of type Date, found type: " + typeof card.created);
+    test.assertEqual(card.modified.getFullYear(), new Date().getFullYear());
 
 }
 
@@ -70,6 +80,18 @@ function testGet()
     test.assertEqual(card.firstName, card2.firstName, "names didn't match after DB load");
 }
 
+function testJSON()
+{
+    log("testing json");
+    var card = buildTestCard();
+    var json = card.toJSON();
+    var j2 = JSON.stringify(card);
+    // test.assertEqual(json, j2);
+    console.log(j2);
+
+
+}
+
 
 
 function setUp()
@@ -85,17 +107,20 @@ function runTests()
     log("running all tests");
     setUp();
     
-    testCreateCard();
-    log("passed testCreateCard");
+    testJSON();
+    log("passed testJSON");
     
-    testSaveCard();
-    log("passed testSaveCard");
+    // testCreateCard();
+    // log("passed testCreateCard");
+    
+    // testSaveCard();
+    // log("passed testSaveCard");
 
-    testInit();
-    log("passed testInit");
+    // testInit();
+    // log("passed testInit");
     
-    testGet();
-    log("passed testGet");
+    // testGet();
+    // log("passed testGet");
 }
 
 runTests();
