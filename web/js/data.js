@@ -25,6 +25,8 @@ var GiftCard = function () {
  */
 GiftCard.prototype.parseJSON = function(json) 
 {
+    console.log("=======================================================");
+    console.log(json);
     var data = JSON.parse(json);
     this.id = data["id"];
     this.firstName =data["firstName"];
@@ -37,14 +39,18 @@ GiftCard.prototype.parseJSON = function(json)
     this.created = new Date(data["created"]);
     this.modified = new Date(data["modified"]); 
     var txData = data["transactions"];
+    
+    if(!txData)
+        return this;
+    
     for( var i = 0; i < txData.length; i++)
     {
         var tx = new Transaction();
-        // tx.parseJSON(txData[i]);
         tx.init(txData[i]);
         this.addTransaction(tx);
 
     }
+    return this;
 }
 
 
@@ -108,7 +114,6 @@ Transaction.prototype.toJSON = function()
         created: this.created,
         barrista: this.barrista
     };
-    console.log(JSON.stringify(json));
     return JSON.stringify(json);
 };
 
@@ -168,12 +173,13 @@ data.init = function()
     data.phones = data.load("phones");
     data.cards = {};
 
-    console.log("ids: " + data.ids);
+    console.log("IDs:" + data.ids);
+
     for(var i=0;i<data.ids.length;i++)
     {
         var id = data.ids[i];
         var card = new GiftCard();
-        card.parseJSON(data.load("card_" + id));
+        card.parseJSON(data.db.getItem("card_" + id));
         data.cards[id] = card;
     }
 }
@@ -181,8 +187,8 @@ data.init = function()
 data.store = function(key, val)
 {
     var str = JSON.stringify(val);
-    console.log("storing: " + key);
-    console.log("json: " + str);
+    // console.log("storing: " + key);
+    // console.log("json: " + str);
 
     data.db.setItem(key, str);
     return str;
@@ -191,9 +197,18 @@ data.store = function(key, val)
 data.load = function(key)
 {
     var val = data.db.getItem(key);
-    console.log("loading: " + key);
-    console.log("parsing: " + val);
+    // console.log("loading: " + key);
+    // console.log("parsing: " + val);
     return JSON.parse(val);
+}
+
+data.clear = function(key)
+{
+    data.emails = {};
+    data.phones = {};
+    data.cards = {};
+    data.ids = [];
+    data.db.clear();
 }
 
 
@@ -232,8 +247,7 @@ data.save = function(gc)
         gc.id = data.nextId();
     }
     data.index(gc);
-    console.log(data.ids);
-    data.db.setItem("card_" + gc.id, gc);
+    data.db.setItem("card_" + gc.id, gc.toJSON());
     data.saveIndex();
     return gc.id;
 };

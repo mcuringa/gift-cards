@@ -24,10 +24,11 @@ function buildTestCard()
     // return data.createCard("Matt Curinga", 40, "917-555-5555");
     var card = new GiftCard();
     card.id = 0;
-    card.firstName = "Matt";
-    card.lastName = "Curinga";
-    card.addTransaction(new Transaction(40, "init", "AM"));
-    card.phone = "917-555-5555";
+    card.firstName = "Foo";
+    card.lastName = "Bar";
+    card.addTransaction(new Transaction(40, "init", "FB"));
+    card.phone = "718-555-5555";
+    card.email = "foo@example.com";
     return card;
 
 }
@@ -64,26 +65,27 @@ function testSaveCard()
 function testInit()
 {
     log("testing init");
+    data.db.clear();
+    var card = buildTestCard();
+
+    var id = data.save(card);
     data.init();
     test.assertTrue(data.ids);
     test.assertTrue(data.emails);
     test.assertTrue(data.phones);
     test.assertTrue(data.cards);
-
 }
 
 function testGet()
 {
     log("testing get");
-    data.db.clear();
+    data.clear();
     var card = buildTestCard();
     var id = data.save(card);
-    log(data.cards);
-    // test.assertEqual(1, data.cards.length);
 
     data.init();
     var card2 = data.get(id);
-    test.assertTrue(card2, "get() return null");
+    test.assertTrue(card2, "get() returned null");
     test.assertEqual(card.firstName, card2.firstName, "names didn't match after DB load");
 }
 
@@ -114,14 +116,14 @@ function runTests()
     log("running all tests");
     setUp();
     
-    testJSON();
-    log("passed testJSON");
+    // testJSON();
+    // log("passed testJSON");
     
-    testCreateCard();
-    log("passed testCreateCard");
+    // testCreateCard();
+    // log("passed testCreateCard");
     
-    testSaveCard();
-    log("passed testSaveCard");
+    // testSaveCard();
+    // log("passed testSaveCard");
 
     testInit();
     log("passed testInit");
