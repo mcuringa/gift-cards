@@ -5,12 +5,11 @@
  * - to edit core information in that card
  * - and to add transactsions
  */
-function showDetail()
+function showDetail(card)
 { 
-    var cards = data.findAll();
-    var card = cards[0]; //just use the first card for now, while we test out the page
-
-
+	if(!card)
+		card = new GiftCard();
+    
 	$("#firstName").val(card.firstName);
 
 	$("#lastName").val(card.lastName);
