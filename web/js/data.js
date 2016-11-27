@@ -1,9 +1,9 @@
-//data.js
-
-/*
+/**
+ * data.js
  * contains initial data for testing
  * and functions for accessing/writing
- * data
+ * data.
+ * defines models for `GiftCard` and `Transaction`
  */
 
 var GiftCard = function () {
@@ -20,13 +20,12 @@ var GiftCard = function () {
 };
 
 /**
- * create a new gift card w new operator, populate all fields that say this.,
- * dates are strings, use date constructor, transaction use (add transaction)
+ * initializes this `GiftCard` from a JSON string
+ * @param json a json string representing a `GiftCard`
+ * @return this `GiftCard` for chaining
  */
 GiftCard.prototype.parseJSON = function(json) 
 {
-    console.log("=======================================================");
-    console.log(json);
     var data = JSON.parse(json);
     this.id = data["id"];
     this.firstName =data["firstName"];
@@ -168,8 +167,6 @@ data.init = function()
     data.phones = data.load("phones");
     data.cards = {};
 
-    console.log("IDs:" + data.ids);
-
     for(var i=0;i<data.ids.length;i++)
     {
         var id = data.ids[i];
@@ -182,9 +179,6 @@ data.init = function()
 data.store = function(key, val)
 {
     var str = JSON.stringify(val);
-    // console.log("storing: " + key);
-    // console.log("json: " + str);
-
     data.db.setItem(key, str);
     return str;
 }
@@ -192,8 +186,6 @@ data.store = function(key, val)
 data.load = function(key)
 {
     var val = data.db.getItem(key);
-    // console.log("loading: " + key);
-    // console.log("parsing: " + val);
     return JSON.parse(val);
 }
 
@@ -232,7 +224,7 @@ data.saveIndex = function()
  * save a single card to localStorage
  * also, update all in-memory and saved
  * indices.
- * return the new id
+ * @return the new id of the `GiftCard`
  */
 data.save = function(gc)
 {
