@@ -20,17 +20,30 @@ function showDetail()
 	$("#email").val(card.email);
 
 	$("#balance").html(card.balance.toFixed(2));
-	console.log("balance:" + typeof card.balance);
+
+	//console.log("balance:" + typeof card.balance);
 
 	$("#amt").val(card.amt); 
 
 	//$("#transaction").val(card.transaction); 
+	var table=("#details tbody")
 
 	for(var i=0; i<card.transactions.length; i++)
 	{
+		var row= "<tr>";
+		row += td(card[i].amt);
+		row += td(card[i].type);
+		row += td(card[i].date);
+		row += td(card[i].barista);
+		row += "</tr>"
 		//some html code to add a tx to a list or table
 	}
 
+}
+
+function tr(cell)
+{
+	return "<td>" + cell + "</td>";
 }
 
 
