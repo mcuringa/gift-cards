@@ -8,16 +8,17 @@
  */
 function showList()
 {
+    console.log("showing list");
     var table = $("#list tbody");
     var cards = data.findAll();
     for(var i=0; i<cards.length; i++)
     {
         var row= "<tr>";
-        row += td(cards[i].firstName);
-        row += td(cards[i].lastName);
+        row += td(cards[i].firstName + " " + cards[i].lastName);
         row += td(cards[i].balance);
         row += td(cards[i].phone);
         row += "</tr>";
+        console.log(row);
         table.append($(row));
 
 //dynamically create a new row for cards[i]
@@ -28,5 +29,5 @@ function showList()
 
 function td(cell)
 {
-    return "<td>" + cell + " </td>";
+    return "<td>" + cell + "</td>";
 }

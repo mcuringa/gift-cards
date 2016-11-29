@@ -25,6 +25,7 @@ function showHome()
 	var letterButtons = alphabet();
 	//other things that need to happen
 
-	$("#home").html("");
-    $("#home").append(letterButtons);
+	$("#name-buttons").html("");
+    $("#name-buttons").append(letterButtons);
+    showList();
 }

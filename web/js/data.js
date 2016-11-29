@@ -166,6 +166,7 @@ data.init = function()
     data.emails = data.load("emails");
     data.phones = data.load("phones");
     data.cards = {};
+    data.session = {};
 
     for(var i=0;i<data.ids.length;i++)
     {
@@ -248,7 +249,7 @@ data.nextId = function()
 
 data.findAll = function()
 {
-    $("#main").html(testData.toString());
+
     return testData;
 
 };
@@ -342,7 +343,7 @@ var testData =
 ];
 
 
-data.findByName("Kai Williams");
+// data.findByName("Kai Williams");
 //data.findByPhone("222 2-222222");
 //data.findAll();
 //data.search("kai will111iams");
