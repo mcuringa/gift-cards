@@ -162,6 +162,8 @@ data.db = localStorage;
 data.init = function()
 {
     data.ids = data.load("ids");
+    if (!data.ids)
+        data.ids=[];
 
     data.emails = data.load("emails");
     data.phones = data.load("phones");
@@ -301,7 +303,7 @@ data.search = function(query)
 {
     // version 1    
     //check query against name, email, phone
-    return  data.findByName(query);  
+    return  (data.findByName(query));  
 };
 
 
