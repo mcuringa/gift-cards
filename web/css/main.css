@@ -1,16 +1,28 @@
 body
 {
-	background: #b3cccc;
-	color: #EEE;
+	background: #C0E788;
+	color: #664740;
 	text-align: center;
-	font: normal 9pt Tahoma;
+	font-family: Cochin, Georgia, "Times New Roman", Times, serif;
 }
 
 h1
 {
 	text-align: center;
-	color: black;
-	font: normal Tahoma;
+}
+
+button
+{
+	color: #3F7B1D;
+	font-family: Cochin, Georgia, "Times New Roman", Times, serif;
+}
+
+#logo
+{
+position: absolute;
+left: 0px;
+max-width: 12%;
+margin-left: 10px;
 }
 
 #top-nav
@@ -41,7 +53,6 @@ h1
 	width: 150px;
 	height: 75px;
 	margin: 5px;
-	font: normal Tahoma;
 }
 
 .view
@@ -54,7 +65,10 @@ h1
 	display: none;
 }
 
-section#detail.view{
-	background-color: #282828;
-	height:400px;
+#detail
+{
+	background-color: white;
+	height:45%;
+	width: 45%;
+	margin: 10px auto 10px auto;
 }
