@@ -260,38 +260,38 @@ data.get = function(id)
 }
 
 data.findByName = function(name)
-{
-    for (var i=0; i < testData.length; i++){
-    var namecat = testData[i].firstName + " " + testData[i].lastName
-	    if(namecat == name){
-	        return  $("#main").html("name" + testData[i].toString());
-	    }
-	}
-
-
-};
-
-/*
-data.findByName = function(name){
-	var show = _.findWhere(testData,{name: name}); 
-	 console.log(show);
-	 return show;
-};
-data.findByPhone = function(phone){
-	var show = _.findWhere(testData.shows, {phone: phone}); 
-	 console.log(show);
-	 return show;
+  
+{  var result=[];
+    for (var i=0; i < testData.length; i++)
+    {
+        var namecat = testData[i].firstName+ testData[i].lastName
+	    if(namecat.startsWith(name))
+        {
+           result.push(testData[i]); console.log(testData[i]);
+	   
+        }
+        
+    }   return result;
 };
 
 
-*/
+
+
+
 data.findByPhone = function(phone)
 {
   var phoneCat=phone.replace(/-|\s/g,"");
   for (var i=0; i < testData.length; i++){
+
+    if(phoneCat == testData[i].phone){
+        
+        console.log(testData[i]);
+        return  $("#main").html("phone number" + testData[i].toString());
+
     if(phoneCat == testData[i].phone)
     {  
         return  $("#main").append("phone number" + testData[i].toString());
+
 	} 
   }
 };
@@ -300,8 +300,20 @@ data.findByPhone = function(phone)
 data.search = function(query)
 {
     // version 1    
+
+    //check query against name, email, phone
+
+
+    	data.findByPhone(query)
+   
+    	data.findByName(query)
+    	return;
+    
+};
+
     //check query against name, email, phone, etc.
 }
+
 
 data.createCard = function(name, amt, phone)
 {
@@ -321,6 +333,7 @@ data.createCard = function(name, amt, phone)
 var testData = 
 [
     data.createCard("Kai Williams", 10, "212-555-1231"),
+    data.createCard("Kai William", 1, "212-555-1237"),
     data.createCard("Ryan Sobeck", 5, "212-555-1232"),
     data.createCard("Filiz C.", 20, "212-555-1233"),
     data.createCard("Austen Cortese", 10, "212-555-1234"),
@@ -330,7 +343,8 @@ var testData =
 
 
 data.findByName("Kai Williams");
-data.findByPhone("222 2-222222");
-data.findAll();
+//data.findByPhone("222 2-222222");
+//data.findAll();
+//data.search("kai will111iams");
 
 
