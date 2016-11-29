@@ -162,6 +162,8 @@ data.db = localStorage;
 data.init = function()
 {
     data.ids = data.load("ids");
+    if (!data.ids)
+        data.ids=[];
 
     data.emails = data.load("emails");
     data.phones = data.load("phones");
