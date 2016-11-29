@@ -267,8 +267,7 @@ data.findByName = function(name)
         var namecat = testData[i].firstName+ testData[i].lastName
 	    if(namecat.startsWith(name))
         {
-           result.push(testData[i]); console.log(testData[i]);
-	   
+           result.push(testData[i]); 
         }
         
     }   return result;
