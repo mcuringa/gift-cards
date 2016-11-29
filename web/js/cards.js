@@ -40,9 +40,10 @@ function registerListeners()
 
 function main()
 {
+    data.init();
     registerListeners();
     showView("home");
 }
 
 
-main();
+main(); 

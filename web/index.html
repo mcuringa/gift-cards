@@ -45,7 +45,39 @@
 <!-- the dynamic section of our application -->
 <section id="home" class="view"></section>
 <section id="list" class="view"></section>
-<section id="detail" class="view"></section>
+<section id="detail" class="view">
+        <div>
+            <button type="button"> Increase Balance </button>
+        </div>
+        
+
+    <form id="gcForm">
+        First Name: <input type="text" id="firstName"><br>
+        Last Name: <input type="text" id="lastName"><br>
+        Phone Number: <input type="tel" id="phone"><br>
+        e-mail:  <input type="text" id="email"><br>
+    </form>
+    <div>
+                
+        <input id="amt" placeholder=$>
+        <button type="button"> apply </button>
+                
+    </div>
+    <div>
+            <label id= "balance"> Gift Card Balance:</label>
+            $ <span></span>
+            <button type="button"> Print Card Balance </button>
+    </div>
+    <div>
+            <form id="transactions"> Transactions </form>
+            
+    </div>
+    <div> 
+        <button id= "save" type="button"> Save </button>
+    </div>
+  
+
+</section>
 <section id="edit" class="view"></section>
 
 <script src="./js/data.js" charset="utf-8"></script>

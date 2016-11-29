@@ -53,3 +53,8 @@ h1
 {
 	display: none;
 }
+
+section#detail.view{
+	background-color: #282828;
+	height:400px;
+}
