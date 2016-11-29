@@ -33,7 +33,6 @@ function registerListeners()
     $("#top-nav button").click(function(e) {
     	var btn = $(e.target);
     	var id = btn.data("target");
-        console.log(id);
     	showView(id);
     });
 }

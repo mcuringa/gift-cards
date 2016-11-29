@@ -166,6 +166,7 @@ data.init = function()
     data.emails = data.load("emails");
     data.phones = data.load("phones");
     data.cards = {};
+    data.session = {};
 
     for(var i=0;i<data.ids.length;i++)
     {
@@ -248,7 +249,7 @@ data.nextId = function()
 
 data.findAll = function()
 {
-    $("#main").html(testData.toString());
+
     return testData;
 
 };
@@ -260,17 +261,18 @@ data.get = function(id)
 }
 
 data.findByName = function(name)
-  
-{  var result=[];
-    for (var i=0; i < testData.length; i++)
+{  
+    var result=[];
+    for (var i=0; i < data.findAll().length; i++)
     {
-        var namecat = testData[i].firstName+ testData[i].lastName
-	    if(namecat.startsWith(name))
+	    if(testData[i].lastName.startsWith(name) || testData[i].firstName.startsWith(name))
         {
            result.push(testData[i]); 
+           console.log(testData[i]);
         }
         
-    }   return result;
+    }   
+    return result;
 };
 
 
@@ -328,7 +330,6 @@ data.createCard = function(name, amt, phone)
 };
 
 
-
 var testData = 
 [
     data.createCard("Kai Williams", 10, "212-555-1231"),
@@ -341,7 +342,7 @@ var testData =
 ];
 
 
-data.findByName("Kai Williams");
+// data.findByName("Kai Williams");
 //data.findByPhone("222 2-222222");
 //data.findAll();
 //data.search("kai will111iams");
