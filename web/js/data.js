@@ -165,8 +165,9 @@ data.init = function()
 
     data.emails = data.load("emails");
     data.phones = data.load("phones");
-    data.cards = {};
+    data.cards = {}; 
     data.session = {};
+    data.allCards = [];
 
     for(var i=0;i<data.ids.length;i++)
     {
@@ -174,6 +175,7 @@ data.init = function()
         var card = new GiftCard();
         card.parseJSON(data.db.getItem("card_" + id));
         data.cards[id] = card;
+        data.allCards.push(card);
     }
 }
 
@@ -249,26 +251,25 @@ data.nextId = function()
 
 data.findAll = function()
 {
-
-    return testData;
-
+    return data.allCards;
 };
 
 data.get = function(id)
 {
     var gc = data.cards[id];
     return gc;
-}
+};
 
 data.findByName = function(name)
 {  
     var result=[];
-    for (var i=0; i < data.findAll().length; i++)
+    var cards = data.findAll();
+    for (var i=0; i < cards.length; i++)
     {
-	    if(testData[i].lastName.startsWith(name) || testData[i].firstName.startsWith(name))
+	    if(cards[i].lastName.startsWith(name) || cards[i].firstName.startsWith(name))
         {
-           result.push(testData[i]); 
-           console.log(testData[i]);
+           result.push(cards[i]); 
+           console.log(cards[i]);
         }
         
     }   
@@ -281,39 +282,26 @@ data.findByName = function(name)
 
 data.findByPhone = function(phone)
 {
-  var phoneCat=phone.replace(/-|\s/g,"");
-  for (var i=0; i < testData.length; i++){
+  //var phoneCat=phone.replace(/-|\s/g,"");
+  var result=[];
+  var cards = data.findAll();
+  for (var i=0; i < cards.length; i++){
 
-    if(phoneCat == testData[i].phone){
-        
-        console.log(testData[i]);
-        return  $("#main").html("phone number" + testData[i].toString());
-
-    if(phoneCat == testData[i].phone)
-    {  
-        return  $("#main").append("phone number" + testData[i].toString());
-
-	} 
-  }
+    if(cards[i].phone.startsWith(phone))
+    {
+        result.push(cards[i]);
+        console.log(cards[i]);
+    } 
+  }return result;
 };
 
 
 data.search = function(query)
 {
     // version 1    
-
     //check query against name, email, phone
-
-
-    	data.findByPhone(query)
-   
-    	data.findByName(query)
-    	return;
-    
+    return  data.findByName(query);  
 };
-
-    //check query against name, email, phone, etc.
-}
 
 
 data.createCard = function(name, amt, phone)
@@ -332,12 +320,12 @@ data.createCard = function(name, amt, phone)
 
 var testData = 
 [
-    data.createCard("Kai Williams", 10, "212-555-1231"),
+    data.createCard("Kai Williams", 10, "212-455-1231"),
     data.createCard("Kai William", 1, "212-555-1237"),
-    data.createCard("Ryan Sobeck", 5, "212-555-1232"),
-    data.createCard("Filiz C.", 20, "212-555-1233"),
+    data.createCard("Ryan Sobeck", 5, "212-545-1232"),
+    data.createCard("Filiz C.", 20, "210-555-1233"),
     data.createCard("Austen Cortese", 10, "212-555-1234"),
-    data.createCard("Robby Lucia", 30, "212-555-1235"),
+    data.createCard("Robby Lucia", 30, "212-555-1635"),
     data.createCard("Alexandra Turturro", 15, "212-555-1236")
 ];
 
