@@ -7,8 +7,14 @@
  */
 function showDetail()
 { 	var table = $("#detail tbody");
-    var cards = data.findAll();
-    var card = cards[0]; //just use the first card for now, while we test out the page
+    var card;
+    if(data.session["card"])
+        card = data.session["card"]
+    else
+        card = new GiftCard();
+    
+    // var cards = data.findAll();
+    // var card = cards[0]; //just use the first card for now, while we test out the page
 
 
 	$("#firstName").val(card.firstName);
@@ -42,7 +48,7 @@ function showDetail()
 
 	function td(cell)
 	{
-    return "<td>" + cell + " </td>";
+        return "<td>" + cell + " </td>";
 	}
 
 }
