@@ -197,6 +197,7 @@ data.clear = function(key)
     data.emails = {};
     data.phones = {};
     data.cards = {};
+    data.allCards = [];
     data.ids = [];
     data.db.clear();
 }
