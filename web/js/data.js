@@ -261,18 +261,19 @@ data.get = function(id)
 }
 
 data.findByName = function(name)
-  
-{  var result=[];
-    for (var i=0; i < testData.length; i++)
+{  
+    var result=[];
+    for (var i=0; i < data.findAll().length; i++)
     {
-        var namecat = testData[i].firstName+ testData[i].lastName
-	    if(namecat.startsWith(name))
+	    if(testData[i].lastName.startsWith(name) || testData[i].firstName.startsWith(name))
         {
-           result.push(testData[i]); console.log(testData[i]);
+           result.push(testData[i]); 
+           console.log(testData[i]);
 	   
         }
         
-    }   return result;
+    }   
+    return result;
 };
 
 
