@@ -300,7 +300,7 @@ data.search = function(query)
 {
     // version 1    
     //check query against name, email, phone
-    return  data.findByName(query);  
+    return  (data.findByName(query));  
 };
 
 
