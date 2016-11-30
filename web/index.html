@@ -12,7 +12,6 @@
 
     <title>JBS Giftcard Tracker</title>
     <script src="js/jquery-3.1.0.js" charset="utf-8"></script>
-    <script src="js/underscore-min.js" charset="utf-8"></script>
 
     <link href="css/main.css" type="text/css" rel="stylesheet">
 
@@ -27,8 +26,7 @@
     <h1>Gift Card Tracker</h1>
     <nav id="top-nav">
         <button data-target="home">HOME</button>
-        <button data-target="list">LIST</button>
-        <button data-target="detail">DETAIL</button>
+        <button data-target="detail">NEW CARD</button>
         <button data-target="reports">REPORTS</button>
     </nav>
 </header>
@@ -40,18 +38,7 @@
 
     <div id="name-buttons"></div>
 
-    <div id="list">
-        <table>
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Balance</th>
-                    <th>Phone</th>
-                </tr>
-            </thead>
-            <tbody></tbody>
-        </table>
-    </div>
+    <div id="list"><ul></ul></div>
     
 </section>
 

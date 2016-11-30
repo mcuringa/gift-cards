@@ -199,6 +199,7 @@ data.clear = function(key)
     data.emails = {};
     data.phones = {};
     data.cards = {};
+    data.allCards = [];
     data.ids = [];
     data.db.clear();
 }
@@ -213,9 +214,11 @@ data.clear = function(key)
  */
 data.index = function(gc)
 {
+    console.log(data.ids);
     data.ids.push(gc.id);
-    data.emails[gc.email] = gc.id;
-    data.phones[gc.phone] = gc.id;
+    data.allCards.push(gc);
+    // data.emails[gc.email] = gc.id;
+    // data.phones[gc.phone] = gc.id;
 }
 
 data.saveIndex = function()
@@ -234,7 +237,7 @@ data.saveIndex = function()
 data.save = function(gc)
 {
     //save the card to the DB, return the saved object
-    if(gc.id ==0)
+    if(gc.id == 0)
     {
         gc.id = data.nextId();
     }
