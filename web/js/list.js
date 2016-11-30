@@ -6,28 +6,36 @@
  * (e.g. if they click on `A` it will show
  * names that start with A)
  */
+
 function showList()
 {
-    console.log("showing list");
-    var table = $("#list tbody");
+    var list = $("#list ul");
     var cards = data.findAll();
+    // cards = testData;
     for(var i=0; i<cards.length; i++)
     {
-        var row= "<tr>";
-        row += td(cards[i].firstName + " " + cards[i].lastName);
-        row += td(cards[i].balance);
-        row += td(cards[i].phone);
-        row += "</tr>";
-        console.log(row);
-        table.append($(row));
+        var item = $("<li></li>");
+        var link = $('<button class="name-link" data-id=""></button>');
 
-//dynamically create a new row for cards[i]
+        link.data("id", cards[i].id);
+        link.html(cards[i].firstName + " " + cards[i].lastName + " $" + cards[i].balance);
+        item.append(link);
+        list.append(item);
     }
 
 
 }
 
-function td(cell)
-{
-    return "<td>" + cell + "</td>";
-}
+$('.name-link').click(function(e) {
+
+    console.log("clicking a name");
+    var list= event.target;
+    console.log(list);
+    var id = Number( $(list).data("id") );
+
+    //look up that giftcard
+    var card = data.get(id);
+    data.session.card = card;
+    showView("detail");
+
+});
