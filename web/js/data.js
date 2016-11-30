@@ -264,11 +264,12 @@ data.get = function(id)
 
 data.findByName = function(name)
 {  
+    name = name.toLowerCase();
     var result=[];
     var cards = data.findAll();
     for (var i=0; i < cards.length; i++)
     {
-	    if(cards[i].lastName.startsWith(name) || cards[i].firstName.startsWith(name))
+	    if(cards[i].lastName.toLowerCase().startsWith(name) || cards[i].firstName.toLowerCase().startsWith(name))
         {
            result.push(cards[i]); 
            console.log(cards[i]);
@@ -278,13 +279,19 @@ data.findByName = function(name)
     return result;
 };
 
+data.format = function()
+{
 
+        data[i].phone.replace(/-|\s/g,"");
+        
+    }    retur
+};
 
 
 
 data.findByPhone = function(phone)
 {
-  //var phoneCat=phone.replace(/-|\s/g,"");
+  var phoneCat=phone.replace(/-|\s/g,"");
   var result=[];
   var cards = data.findAll();
   for (var i=0; i < cards.length; i++){
