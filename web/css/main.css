@@ -4,6 +4,7 @@ body
 	color: #664740;
 	text-align: center;
 	font-family: Cochin, Georgia, "Times New Roman", Times, serif;
+	max-width: 1024px;
 }
 
 h1
@@ -39,21 +40,24 @@ margin-left: 10px;
 	margin-right:10px;
 }
 
-#home
+#name-buttons button
 {
-	margin: 10px auto 10px auto;
-	text-align: center;
-	width: 45%;
-	float: left;
-	border-right: medium solid lightgrey;
-}
-
-#home button
-{
-	width: 150px;
-	height: 75px;
+	width: 120px;
+	line-height: 2em;
 	margin: 5px;
 }
+#name-buttons
+{
+	width: 60%;	
+	float: left;
+}
+
+#list
+{
+	width: 35%;
+	float: left;
+}
+
 
 .view
 {
@@ -72,3 +76,4 @@ margin-left: 10px;
 	width: 45%;
 	margin: 10px auto 10px auto;
 }
+
