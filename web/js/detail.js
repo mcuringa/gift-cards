@@ -56,5 +56,29 @@ function td(cell)
 	return "<td>" + cell + "</td>";
 }
 
+$("#saveGC").click(function(){
+	console.log("a" + "#saveGC")
+	var card = new GiftCard();
 
+//set some properties
+	card.firstName= $("#firstName").val();
+	card.lastName = $("#lastName").val();
+	card.phone = $("#phone").val();	
+	card.email= $("#email").val();
+
+	if(card.id == 0)
+	{
+		var amt = $("#balance").val();
+		var tx = new Transaction(amt, "initial", "AU");
+		card.addTransaction(tx);
+	}
+
+	//save it to the (local) datase
+	data.save(card);
+
+	console.log(data.findAll()[data.findAll().length-1]);
+
+	updateDisplay();
+
+});
 
