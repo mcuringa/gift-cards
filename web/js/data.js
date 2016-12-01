@@ -6,6 +6,7 @@
  * defines models for `GiftCard` and `Transaction`
  */
 
+
 var GiftCard = function () {
     this.id = 0;
     this.firstName = "";
@@ -281,16 +282,6 @@ data.findByName = function(name)
     }   
     return result;
 };
-
-data.format = function()
-{
-
-        data[i].phone.replace(/-|\s/g,"");
-        
-    }    retur
-};
-
-
 
 data.findByPhone = function(phone)
 {
