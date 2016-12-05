@@ -11,7 +11,7 @@ function showList()
 {
     var list = $("#list ul");
     var cards = data.findAll();
-    // cards = testData;
+    cards = testData;
     for(var i=0; i<cards.length; i++)
     {
         var item = $("<li></li>");

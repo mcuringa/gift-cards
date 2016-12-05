@@ -10,6 +10,12 @@ body
 h1
 {
 	text-align: center;
+	font-size: 50px;
+}
+
+#home
+{
+	margin-top: 5%;
 }
 
 #name-button
@@ -22,7 +28,7 @@ h1
 {
 position: absolute;
 left: 0px;
-max-width: 12%;
+max-width: 13%;
 margin-left: 10px;
 }
 
@@ -30,6 +36,7 @@ margin-left: 10px;
 {
 	margin: 10px auto 10px auto;
 	text-align: center;
+	margin-top: 3%;
 }
 
 #top-nav button
@@ -42,22 +49,36 @@ margin-left: 10px;
 
 #name-buttons button
 {
-	width: 120px;
-	line-height: 2em;
+	width: 150px;
+	line-height: 3em;
 	margin: 5px;
 }
+
 #name-buttons
 {
 	width: 60%;	
-	float: left;
+	position: absolute;
+	left: 0px;
+}
+
+#list li
+{
+	list-style: none;
+}
+
+
+#list button
+{
+	width: 250px;
+	line-height: 3em;
+	margin: 5px;
 }
 
 #list
 {
-	width: 35%;
-	float: left;
+	position: absolute;
+	right: 150px;
 }
-
 
 .view
 {
