@@ -3,20 +3,20 @@ Using the GiftCard data API
 
 _Examples of how to create, load, store, save, and search gift cards._
 
-<<<<<<< HEAD
-data is a dictionary of arrays that stores all Gift Cards in the database.
+Creating Gift Cards
+-------------------
 
-##**Creating Gift Cards**
+Loading Gift Cards
+------------------
 
+Storing Gift Cards
+------------------
 
-##**Loading Gift Cards**
+Saving Gift Cards
+-----------------
 
-##**Storing Gift Cards** 
-
-##**Saving Gift Cards** 
-
-##**Searching for Gift Cards** 
-=======
+Searching for Gift Cards
+------------------------
 
 Creating and modifying gift cards
 ---------------------------------
@@ -39,5 +39,3 @@ data.save(card);
 
 
 ```
-
->>>>>>> 2c9257ab614d652af6f9a48a6793c926a73da09a
