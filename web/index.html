@@ -12,6 +12,7 @@
 
     <title>JBS Giftcard Tracker</title>
     <script src="js/jquery-3.1.0.js" charset="utf-8"></script>
+    <script src="https://apis.google.com/js/client.js"></script>
     <link href="css/main.css" type="text/css" rel="stylesheet">
 
 </head>
@@ -77,6 +78,7 @@
 
 <section id="edit" class="view"></section>
 <section id="admin" class="view"></section>
+
 <div id="authorize-div" style="display: none">
   <span>Authorize access to Google Sheets API</span>
   <!--Button for the user to click to initiate auth sequence -->
@@ -84,6 +86,8 @@
     Authorize
   </button>
 </div>
+<pre id="output"></pre>
+
 
 <!-- the scripts -->
 <script src="./js/data.js" charset="utf-8"></script>

@@ -171,6 +171,8 @@ data.init = function()
     data.cards = {}; 
     data.session = {};
     data.allCards = [];
+    data.admin = {};
+    data.admin.sheetId = '1XDyXISt8nvktsiFYaJFeuKG8dhU0fTAzOx0AzjaPvng';
 
     for(var i=0;i<data.ids.length;i++)
     {
