@@ -27,6 +27,7 @@
         <button data-target="home">HOME</button>
         <button data-target="detail">NEW CARD</button>
         <button data-target="reports">REPORTS</button>
+        <button data-target="admin">ADMIN</button>
     </nav>
 </header>
 
@@ -75,6 +76,14 @@
 </section>
 
 <section id="edit" class="view"></section>
+<section id="admin" class="view"></section>
+<div id="authorize-div" style="display: none">
+  <span>Authorize access to Google Sheets API</span>
+  <!--Button for the user to click to initiate auth sequence -->
+  <button id="authorize-button" onclick="handleAuthClick(event)">
+    Authorize
+  </button>
+</div>
 
 <!-- the scripts -->
 <script src="./js/data.js" charset="utf-8"></script>
@@ -82,6 +91,7 @@
 <script src="./js/home.js" charset="utf-8"></script>
 <script src="./js/list.js" charset="utf-8"></script>
 <script src="./js/detail.js" charset="utf-8"></script>
+<script src="./js/admin.js" charset="utf-8"></script>
 
 <script src="./js/cards.js" charset="utf-8"></script>
 
