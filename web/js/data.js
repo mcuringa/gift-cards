@@ -268,9 +268,10 @@ data.get = function(id)
 
 data.mostRecentX = function()
 {
-    var trans = [];
-    _.sortBy(cards.transactions, 'created');
-    cards.transactions.reverse();
+    var cards = data.findAll();
+    _.sortBy(cards, 'modified');
+    cards.reverse();
+    var trans=[];
     for (var i = 0; i< 5; i++)
     {
         trans.push(cards.transactions[i]);
