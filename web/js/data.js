@@ -266,6 +266,18 @@ data.get = function(id)
     return gc;
 };
 
+data.mostRecentX = function()
+{
+    var trans = [];
+    _.sortBy(cards.transactions, 'created');
+    cards.transactions.reverse();
+    for (var i = 0; i< 5; i++)
+    {
+        trans.push(cards.transactions[i]);
+    }
+    return trans;
+}
+
 data.findByName = function(name)
 {  
     name = name.toLowerCase();
