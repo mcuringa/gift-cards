@@ -274,7 +274,7 @@ data.mostRecentX = function()
     var trans=[];
     for (var i = 0; i< 5; i++)
     {
-        trans.push(cards.transactions[i]);
+        trans.push(cards[i]);
     }
     return trans;
 }
