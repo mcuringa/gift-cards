@@ -13,6 +13,7 @@
     <title>JBS Giftcard Tracker</title>
     <script src="js/underscore.js" charset="utf-8"></script>
     <script src="js/jquery-3.1.0.js" charset="utf-8"></script>
+    <script src="https://apis.google.com/js/client.js"></script>
     <link href="css/main.css" type="text/css" rel="stylesheet">
 
 </head>
@@ -28,6 +29,7 @@
         <button data-target="home">HOME</button>
         <button data-target="detail">NEW CARD</button>
         <button data-target="reports">REPORTS</button>
+        <button data-target="admin">ADMIN</button>
     </nav>
 </header>
 
@@ -44,14 +46,25 @@
 
 <section id="detail" class="view">
     <form id="gcForm">
+        <br>
         First Name: <input type="text" id="firstName"><br>
+        <br>
         Last Name: <input type="text" id="lastName"><br>
+        <br>
         Phone Number: <input type="tel" id="phone"><br>
-        e-mail:  <input type="text" id="email"><br>
+        <br>
+        E-mail:  <input type="text" id="email"><br>
+        <br>
 
         <div>        
+
+            <input id="balance" placeholder="$">
+            <button id="saveGC" type="button">save</button>  
+            <br>    
+
             <input type="number" id="balance" placeholder="$">
             <button id="saveGC" type="button">save</button>      
+
         </div>
         <div>    
             <input type="text" id="barrista" placeholder="initials"><br>    
@@ -60,13 +73,15 @@
         </div>
     </form>
 
+
+
     <form>
        Gift Card Balance: <div id="newbalance"> 
         $ </div>
     </form>
 
     <div>
-
+        <br>
         <table>
             <thead>
                 <tr><th>Date</th><th>Amount</th><th>Type</th><th>Barista</th></tr>
@@ -75,11 +90,21 @@
         </table>
 
 
-
     </div>
 </section>
 
 <section id="edit" class="view"></section>
+<section id="admin" class="view"></section>
+
+<div id="authorize-div" style="display: none">
+  <span>Authorize access to Google Sheets API</span>
+  <!--Button for the user to click to initiate auth sequence -->
+  <button id="authorize-button" onclick="handleAuthClick(event)">
+    Authorize
+  </button>
+</div>
+<pre id="output"></pre>
+
 
 <!-- the scripts -->
 <script src="./js/data.js" charset="utf-8"></script>
@@ -87,6 +112,7 @@
 <script src="./js/home.js" charset="utf-8"></script>
 <script src="./js/list.js" charset="utf-8"></script>
 <script src="./js/detail.js" charset="utf-8"></script>
+<script src="./js/admin.js" charset="utf-8"></script>
 
 <script src="./js/cards.js" charset="utf-8"></script>
 

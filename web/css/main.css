@@ -96,5 +96,16 @@ margin-left: 10px;
 	height:45%;
 	width: 45%;
 	margin: 10px auto 10px auto;
+	font-size: 25px;
 }
 
+table, th, td
+{
+	border: 1px solid black;
+	margin: auto;
+}
+
+table
+{
+	border-collapse: collapse;
+}
