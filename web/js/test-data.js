@@ -74,6 +74,7 @@ function testInit()
     test.assertTrue(data.emails);
     test.assertTrue(data.phones);
     test.assertTrue(data.cards);
+    test.assertEqual(data.cards[id].id, card.id);
 }
 
 function testGet()
@@ -113,7 +114,7 @@ function setUp()
 {
     log("setting up tests");
     log("clearing all data");
-    data.db.clear();
+    data.clear();
 }
 
 
@@ -137,7 +138,7 @@ function runTests()
     testGet();
     log("***** passed testGet *****");
 
-    findAll();
+    // findAll();
     log("findAll");
 }
 

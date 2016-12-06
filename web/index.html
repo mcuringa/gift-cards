@@ -11,7 +11,9 @@
     <meta name="author" content="ant">
 
     <title>JBS Giftcard Tracker</title>
+    <script src="js/underscore.js" charset="utf-8"></script>
     <script src="js/jquery-3.1.0.js" charset="utf-8"></script>
+    <script src="https://apis.google.com/js/client.js"></script>
     <link href="css/main.css" type="text/css" rel="stylesheet">
 
 </head>
@@ -27,6 +29,7 @@
         <button data-target="home">HOME</button>
         <button data-target="detail">NEW CARD</button>
         <button data-target="reports">REPORTS</button>
+        <button data-target="admin">ADMIN</button>
     </nav>
 </header>
 
@@ -69,6 +72,10 @@
     </form>
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 9e70f39d0ab8b60e57a12be4e22e73470a1ea501
     <form>
         <br>
        Gift Card Balance: <div id="newbalance"> 
@@ -84,10 +91,25 @@
             <tbody></tbody>
         </table>
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 9e70f39d0ab8b60e57a12be4e22e73470a1ea501
     </div>
 </section>
 
 <section id="edit" class="view"></section>
+<section id="admin" class="view"></section>
+
+<div id="authorize-div" style="display: none">
+  <span>Authorize access to Google Sheets API</span>
+  <!--Button for the user to click to initiate auth sequence -->
+  <button id="authorize-button" onclick="handleAuthClick(event)">
+    Authorize
+  </button>
+</div>
+<pre id="output"></pre>
+
 
 <!-- the scripts -->
 <script src="./js/data.js" charset="utf-8"></script>
@@ -95,6 +117,7 @@
 <script src="./js/home.js" charset="utf-8"></script>
 <script src="./js/list.js" charset="utf-8"></script>
 <script src="./js/detail.js" charset="utf-8"></script>
+<script src="./js/admin.js" charset="utf-8"></script>
 
 <script src="./js/cards.js" charset="utf-8"></script>
 
