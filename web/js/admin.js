@@ -148,7 +148,7 @@ function importSheet(sheet)
             "modified": sheet.values[i][6]
         };
         gc.init(params);
-        gc.addTransaction(new Transaction(sheet.values[i][4], "import", "admin"));
+        gc.addTransaction(new Transaction(Number(sheet.values[i][4]), "import", "admin"));
         data.save(gc);
     }
 
