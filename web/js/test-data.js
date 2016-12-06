@@ -102,7 +102,6 @@ function testJSON()
 
 }
 
-
 function testFindAll()
 {
     //clear the db so we know what to expect
@@ -149,8 +148,12 @@ function runTests()
     testGet();
     log("***** passed testGet *****");
 
+    
     testFindAll();
     log("findAll");
+    log("***** passed testFindAll *****");
+
+
 }
 
 runTests();
