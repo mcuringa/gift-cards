@@ -102,10 +102,23 @@ function testJSON()
 
 }
 
-function findAll()
+function testFindAll()
 {
-    return  _.sortBy(cards, 'modified');
-};
+    //clear the db so we know what to expect
+    data.clear();
+    var a = buildTestCard();
+    var b = buildTestCard();
+    a.firstName = 'cardA';
+    b.firstName = 'cardB';
+    data.save(a);
+    data.save(b);
+
+    //reload the data
+    data.init();
+    var t = data.findAll();
+    assertEqual(t[0].firstName, "cardB" );
+
+}
 
 
 
@@ -138,8 +151,9 @@ function runTests()
     testGet();
     log("***** passed testGet *****");
 
-    // findAll();
-    log("findAll");
+    testFindAll();
+    log("***** passed testFindAll *****");
+
 }
 
 runTests();
