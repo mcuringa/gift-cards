@@ -101,6 +101,12 @@ function testJSON()
 
 }
 
+function findAll()
+{
+    return  _.sortBy(cards, 'modified');
+};
+
+
 
 
 function setUp()
@@ -130,6 +136,9 @@ function runTests()
     
     testGet();
     log("***** passed testGet *****");
+
+    findAll();
+    log("findAll");
 }
 
 runTests();

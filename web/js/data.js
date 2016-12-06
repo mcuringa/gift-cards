@@ -257,7 +257,7 @@ data.nextId = function()
 
 data.findAll = function()
 {
-    return data.allCards;
+    return  _.sortBy(cards, 'modified');
 };
 
 data.get = function(id)
@@ -266,18 +266,6 @@ data.get = function(id)
     return gc;
 };
 
-data.mostRecentX = function()
-{
-    var cards = data.findAll();
-    _.sortBy(cards, 'modified');
-    cards.reverse();
-    var trans=[];
-    for (var i = 0; i< 5; i++)
-    {
-        trans.push(cards[i]);
-    }
-    return trans;
-}
 
 data.findByName = function(name)
 {  
