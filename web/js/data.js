@@ -265,7 +265,8 @@ data.nextId = function()
 
 data.findAll = function()
 {
-    return  _.sortBy(cards, 'modified');
+
+    return  _.sortBy(data.cards, 'modified');
 };
 
 data.get = function(id)
