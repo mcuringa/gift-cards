@@ -11,7 +11,9 @@
     <meta name="author" content="ant">
 
     <title>JBS Giftcard Tracker</title>
+    <script src="js/underscore.js" charset="utf-8"></script>
     <script src="js/jquery-3.1.0.js" charset="utf-8"></script>
+    <script src="https://apis.google.com/js/client.js"></script>
     <link href="css/main.css" type="text/css" rel="stylesheet">
 
 </head>
@@ -27,6 +29,7 @@
         <button data-target="home">HOME</button>
         <button data-target="detail">NEW CARD</button>
         <button data-target="reports">REPORTS</button>
+        <button data-target="admin">ADMIN</button>
     </nav>
 </header>
 
@@ -52,23 +55,42 @@
         <br>
         E-mail:  <input type="text" id="email"><br>
         <br>
+        Barrista Initials: <input type="text" id="barrista" placeholder="initials">
+        <br>
 
+<<<<<<< HEAD
         <div>           
 
             <input type="number" id="balance" placeholder="$">
             <button id="saveGC" type="button">save</button>      
 
+=======
+        <div> 
+            <br>       
+            Amount: <input type="number" id="balance" placeholder="$">
+            <button id="saveGC" type="button">Save</button>      
+>>>>>>> 98b778d454c273675d9333666ad04139d40025ab
         </div>
+
         <div>    
-            <input type="text" id="barrista" placeholder="initials"><br>    
-            <input id="tx" placeholder="$">
-            <button id="add" type="button">add</button>      
+            <br>    
+            Add Amount:<input id="tx" placeholder="$">
+            <button id="add" type="button">Add</button>      
         </div>
     </form>
 
+<<<<<<< HEAD
+=======
+
+<<<<<<< HEAD
+=======
+
+>>>>>>> 9e70f39d0ab8b60e57a12be4e22e73470a1ea501
+>>>>>>> 98b778d454c273675d9333666ad04139d40025ab
     <form>
+        <br>
        Gift Card Balance: <div id="newbalance"> 
-        $ </div>
+         $</div>
     </form>
 
     <div>
@@ -80,10 +102,28 @@
             <tbody></tbody>
         </table>
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+
+>>>>>>> 9e70f39d0ab8b60e57a12be4e22e73470a1ea501
+>>>>>>> 98b778d454c273675d9333666ad04139d40025ab
     </div>
 </section>
 
 <section id="edit" class="view"></section>
+<section id="admin" class="view"></section>
+
+<div id="authorize-div" style="display: none">
+  <span>Authorize access to Google Sheets API</span>
+  <!--Button for the user to click to initiate auth sequence -->
+  <button id="authorize-button" onclick="handleAuthClick(event)">
+    Authorize
+  </button>
+</div>
+<pre id="output"></pre>
+
 
 <!-- the scripts -->
 <script src="./js/data.js" charset="utf-8"></script>
@@ -91,6 +131,7 @@
 <script src="./js/home.js" charset="utf-8"></script>
 <script src="./js/list.js" charset="utf-8"></script>
 <script src="./js/detail.js" charset="utf-8"></script>
+<script src="./js/admin.js" charset="utf-8"></script>
 
 <script src="./js/cards.js" charset="utf-8"></script>
 
