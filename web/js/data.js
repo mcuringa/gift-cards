@@ -261,7 +261,7 @@ data.nextId = function()
 {
     data.counter++;
     return data.counter;
-}
+};
 
 data.findAll = function()
 {
