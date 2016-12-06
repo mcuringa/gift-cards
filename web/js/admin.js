@@ -10,7 +10,6 @@ var SCOPES = ["https://www.googleapis.com/auth/spreadsheets.readonly"];
  */
 function checkAuth() 
 {
-    console.log("checking auth");
     gapi.auth.authorize(
     {
         'client_id': CLIENT_ID,
@@ -27,11 +26,14 @@ function checkAuth()
 function handleAuthResult(authResult)
 {
     var authorizeDiv = document.getElementById('authorize-div');
-    if (authResult && !authResult.error) {
+    if (authResult && !authResult.error) 
+    {
         // Hide auth UI, then load client library.
         authorizeDiv.style.display = 'none';
-        loadSheetsApi();
-    } else {
+        loadSheetsApi(importCards);
+    }
+    else 
+    {
         // Show auth UI, allowing the user to initiate authorization by
         // clicking authorize button.
         authorizeDiv.style.display = 'inline';
@@ -56,8 +58,7 @@ function handleAuthClick(event)
  */
 function loadSheetsApi(f) 
 {
-    var discoveryUrl =
-        'https://sheets.googleapis.com/$discovery/rest?version=v4';
+    var discoveryUrl = 'https://sheets.googleapis.com/$discovery/rest?version=v4';
     gapi.client.load(discoveryUrl).then(f);
 }
 
@@ -74,22 +75,10 @@ function importCards()
         importBtn.click(function(){
             importSheet(sheet);
         });
-        var table = $("<table></table>");
-        for (var i = 0; i < sheet.values.length; i++) 
-        {
-            var tr = $("<tr></tr>");
-            var row = sheet.values[i];
-            for(var j=0;j<row.length;j++)
-            {
-                var td = $("<td></td>");
-                td.html(row[j]);
-                tr.append(td);
-            }
-            table.append(tr);
-        }
+
         $("#admin").html("");
         $("#admin").append(importBtn);
-        $("#admin").append(table);
+        $("#admin").append(sheetToTable(sheet, true));
     }, 
     function(response) 
     {
@@ -97,11 +86,89 @@ function importCards()
     });
 }
 
+function sheetToTable(sheet, useHeader)
+{
+    var table = $("<table></table>");
+    var start = 0;
+    if(useHeader)
+    {
+        var thead = $("<thead></thead>");
+        thead.append(makeTableRow(sheet.values[0], "th"));
+        start = 1;
+    }
 
+    var tbody = $("<tbody></tbody>");
+    for (var i=start; i<sheet.values.length; i++) 
+    {
+        tbody.append(makeTableRow(sheet.values[i]));
+    }
+    table.append(thead);
+    table.append(tbody);
+    return table;
+
+}
+
+function makeTableRow(row, cellType)
+{
+    var tr = $("<tr></tr>");
+    if(cellType == "th")
+        cellType = "<th></th>";
+    else
+        cellType = "<td></td>";
+
+    for(var i=0;i<row.length;i++)
+    {
+        var cell = $(cellType);
+        cell.html(row[i]);
+        tr.append(cell);
+    }
+    return tr;
+}
+
+function importSheet(sheet)
+{
+
+    if(!window.confirm("Importing this sheet from Google will replace all local giftcards."))
+        return;
+
+    status("Importing " + (sheet.values.length-1) + " gift cards.", 1000);
+
+
+    data.clear();
+
+    for (var i=1; i<sheet.values.length; i++)
+    {
+        var gc = new GiftCard();
+        var params = {
+            "firstName": sheet.values[i][0],
+            "lastName": sheet.values[i][1],
+            "email": sheet.values[i][2],
+            "phone": sheet.values[i][3],
+            "created": sheet.values[i][5],
+            "modified": sheet.values[i][6]
+        };
+        gc.init(params);
+        gc.addTransaction(new Transaction(sheet.values[i][4], "import", "admin"));
+        data.save(gc);
+    }
+
+}
+
+function status(msg, time)
+{
+    if(!$("#admin .status").length)
+        $("#admin").prepend('<div class="status"></div>');
+    
+    $("#admin .status").html(msg);
+    if(time > 0)
+        setTimeout(function(){$("#status").html("");}, time);
+}
 
 function showAdmin()
 {
-    $("#admin").html("admin...");
+    // console.log("data");
+    // console.log(data);
+    $("#admin").html("");
+    status("loading data...")
     checkAuth();
-    loadSheetsApi(importCards);
 }

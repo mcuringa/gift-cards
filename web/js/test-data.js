@@ -107,7 +107,7 @@ function setUp()
 {
     log("setting up tests");
     log("clearing all data");
-    data.db.clear();
+    data.clear();
 }
 
 
