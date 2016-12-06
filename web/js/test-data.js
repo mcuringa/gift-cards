@@ -116,7 +116,7 @@ function testFindAll()
     //reload the data
     data.init();
     var t = data.findAll();
-    assertEqual(t[0].firstName, "cardB" );
+    test.assertEqual(t[0].firstName, "cardB" );
 
 }
 
