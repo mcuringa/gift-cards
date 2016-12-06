@@ -51,27 +51,32 @@
         e-mail:  <input type="text" id="email"><br>
 
         <div>        
-            <input id="balance" placeholder="$">
+            <input type="number" id="balance" placeholder="$">
             <button id="saveGC" type="button">save</button>      
+        </div>
+        <div>    
+            <input type="text" id="barrista" placeholder="initials"><br>    
+            <input id="tx" placeholder="$">
+            <button id="add" type="button">add</button>      
         </div>
     </form>
 
-    <div>
-        <label>Gift Card Balance:</label>
-        <span>$</span>
-    </div>
+
+    <form>
+       Gift Card Balance: <div id="newbalance"> 
+        $ </div>
+    </form>
 
     <div>
 
         <table>
             <thead>
-                <tr><th>Amount</th><th>Type</th><th>Date</th><th>Barista</th></tr>
+                <tr><th>Date</th><th>Amount</th><th>Type</th><th>Barista</th></tr>
             </thead>
             <tbody></tbody>
         </table>
 
 
-        <form id="transactions"> Transactions </form>
 
     </div>
 </section>
