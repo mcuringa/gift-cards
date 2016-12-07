@@ -2,15 +2,17 @@ body
 {
 	background: #C0E788;
 	color: #664740;
-	text-align: center;
 	font-family: Cochin, Georgia, "Times New Roman", Times, serif;
 	max-width: 1024px;
 }
 
 h1
 {
-	text-align: center;
-	font-size: 50px;
+	text-align: left;
+	float: left;
+	margin: 0;
+	margin-right: 5px;
+
 }
 
 #home
@@ -26,26 +28,17 @@ h1
 
 #logo
 {
-position: absolute;
-left: 0px;
-max-width: 13%;
-margin-left: 10px;
-}
-
-#top-nav
-{
-	margin: 10px auto 10px auto;
-	text-align: center;
-	margin-top: 3%;
+	float: left;
+	max-width: 8%;
+	margin-right: 5px;
 }
 
 #top-nav button
 {
-	width: 200px;
-	height: 50px;
-	margin-left: 10px; 
-	margin-right:10px;
+	height: 35px;
+	border-radius: 12px;
 }
+
 
 #name-buttons button
 {
@@ -56,9 +49,10 @@ margin-left: 10px;
 
 #name-buttons
 {
-	width: 60%;	
+	width: 40%;	
 	position: absolute;
 	left: 0px;
+	text-align: center;
 }
 
 #list li
