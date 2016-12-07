@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="rs">
+    <meta name="author" content="mxc">
+    <meta name="author" content="fc">
+    <meta name="author" content="katy auchter">
+    <meta name="author" content="kaiwilliams">
+    <meta name="author" content="ATC">
+    <meta name="author" content="ant">
+
+    <title>JBS Giftcard Tracker</title>
+    <script src="js/jquery-3.1.0.js" charset="utf-8"></script>
+    <script src="js/underscore-min.js" charset="utf-8"></script>
+
+
+    <title>JBS Giftcard Tracker</title>
+    <script src="js/jquery-3.1.0.js" charset="utf-8"></script>
+    <script src="js/underscore-min.js" charset="utf-8"></script>
+    <title>JBS Giftcard Tracker</title>
+
+    <script src="js/jquery-3.1.0.js" charset="utf-8"></script>
+    <script src="js/underscore-min.js" charset="utf-8"></script>
+
+    <link href="css/main.css" type="text/css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<!-- header and navigation -->
+<header>
+    <h1>Gift Card Tracker</h1>
+    <nav id="top-nav">
+        <button data-target="home">HOME</button>
+        <button data-target="list">LIST</button>
+        <button data-target="detail">DETAIL</button>
+        <button data-target="reports">REPORTS</button>
+    </nav>
+</header>
+
+
+
+<!-- the dynamic section of our application -->
+<section id="home" class="view"></section>
+<section id="list" class="view"></section>
+<section id="detail" class="view">
+        <div>
+            <button type="button"> Increase Balance </button>
+        </div>
+        
+
+    <form id="gcForm">
+        First Name: <input type="text" id="firstName"><br>
+        Last Name: <input type="text" id="lastName"><br>
+        Phone Number: <input type="number" id="phone"><br>
+        e-mail:  <input type="text" id="email"><br>
+    </form>
+    <div>
+                
+        <input type="number" placeholder=$>
+        <button type="button"> apply </button>
+                
+    </div>
+    <div>
+            <label id= "balance"> Gift Card Balance:</label>
+            <span> $ </span>
+            <button type="button"> Print Card Balance </button>
+    </div>
+    <div>
+            <form id= "#transactions"> Transactions </form>
+            
+    </div>
+    <div> 
+        <button id= "save" type="button"> Save </button>
+    </div>
+  
+
+</section>
+<section id="edit" class="view"></section>
+
+<script src="./js/data.js" charset="utf-8"></script>
+
+<script src="./js/home.js" charset="utf-8"></script>
+<script src="./js/list.js" charset="utf-8"></script>
+<script src="./js/detail.js" charset="utf-8"></script>
+
+<script src="./js/cards.js" charset="utf-8"></script>
+
+
+</body>
+
+</html>

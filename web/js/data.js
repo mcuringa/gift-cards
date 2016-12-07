@@ -261,11 +261,11 @@ data.nextId = function()
 {
     data.counter++;
     return data.counter;
-}
+};
 
 data.findAll = function()
 {
-    return  _.sortBy(cards, 'modified');
+    return  _.sortBy(data.cards, 'modified').reverse();
 };
 
 data.get = function(id)
