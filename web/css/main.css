@@ -87,10 +87,14 @@ h1
 #detail
 {
 	background-color: white;
-	height:45%;
-	width: 45%;
-	margin: 10px auto 10px auto;
+	margin: 20px auto 20px auto;
 	font-size: 25px;
+	
+}
+
+.side1, .side2
+{
+	float: left;
 }
 
 table, th, td

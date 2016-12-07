@@ -20,6 +20,9 @@ function showView(id)
         case "detail":
             showDetail();
             break;
+        case "admin":
+            showAdmin();
+            break;
         default:
             alert("No view implemented for " + id);
 

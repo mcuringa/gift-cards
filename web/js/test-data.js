@@ -74,6 +74,7 @@ function testInit()
     test.assertTrue(data.emails);
     test.assertTrue(data.phones);
     test.assertTrue(data.cards);
+    test.assertEqual(data.cards[id].id, card.id);
 }
 
 function testGet()
@@ -96,24 +97,34 @@ function testJSON()
     var json = card.toJSON();
     var card2 = new GiftCard();
     card2.parseJSON(json);
-    test.assertEqual(card.id, card2.id);
+    test.assertEqual(card.id, card2.id, "names equal");
 
 
 }
 
-function findAll()
+function testFindAll()
 {
-    return  _.sortBy(cards, 'modified');
-};
+    //clear the db so we know what to expect
+    data.clear();
+    var a = buildTestCard();
+    var b = buildTestCard();
+    a.firstName = 'cardA';
+    b.firstName = 'cardB';
+    data.save(a);
+    data.save(b);
 
-
+    //reload the data
+    data.init();
+    var t = data.findAll();
+    test.assertEqual(t[0].firstName, "cardB" );
+}
 
 
 function setUp()
 {
     log("setting up tests");
     log("clearing all data");
-    data.db.clear();
+    data.clear();
 }
 
 
@@ -137,8 +148,12 @@ function runTests()
     testGet();
     log("***** passed testGet *****");
 
-    findAll();
+    
+    testFindAll();
     log("findAll");
+    log("***** passed testFindAll *****");
+
+
 }
 
 runTests();

@@ -28,16 +28,8 @@ var GiftCard = function () {
 GiftCard.prototype.parseJSON = function(json) 
 {
     var data = JSON.parse(json);
-    this.id = data["id"];
-    this.firstName =data["firstName"];
-    this.lastName =data["lastName"];
-    this.notes = "";
-    this.balance = 0;
-    this.email = "";
-    this.phone = "";
-    this.transactions = [];
-    this.created = new Date(data["created"]);
-    this.modified = new Date(data["modified"]); 
+    this.init(data);
+
     var txData = data["transactions"];
     
     if(!txData)
@@ -51,6 +43,20 @@ GiftCard.prototype.parseJSON = function(json)
 
     }
     return this;
+}
+
+GiftCard.prototype.init =function(data)
+{
+    if(data["id"])
+        this.id = data["id"];
+    
+    this.firstName = data["firstName"];
+    this.lastName = data["lastName"];
+    this.notes = data["notes"];
+    this.email = data["email"];
+    this.phone = data["phone"];
+    this.created = new Date(data["created"]);
+    this.modified = new Date(data["modified"]); 
 }
 
 
@@ -171,6 +177,8 @@ data.init = function()
     data.cards = {}; 
     data.session = {};
     data.allCards = [];
+    data.admin = {};
+    data.admin.sheetId = '1XDyXISt8nvktsiFYaJFeuKG8dhU0fTAzOx0AzjaPvng';
 
     for(var i=0;i<data.ids.length;i++)
     {
@@ -253,11 +261,11 @@ data.nextId = function()
 {
     data.counter++;
     return data.counter;
-}
+};
 
 data.findAll = function()
 {
-    return  _.sortBy(cards, 'modified');
+    return  _.sortBy(data.cards, 'modified').reverse();
 };
 
 data.get = function(id)
