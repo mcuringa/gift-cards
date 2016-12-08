@@ -29,14 +29,15 @@ function showList()
 
 $('.name-link').click(function(e) {
 
-    console.log("clicking a name");
+    console.log("#clicking a name");
     var list= event.target;
     console.log(list);
     var id = Number( $(list).data("id") );
+    
 
     //look up that giftcard
     var card = data.get(id);
     data.session.card = card;
-    showView("detail");
+    showView("id");
 
 });
