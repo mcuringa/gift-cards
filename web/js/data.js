@@ -267,7 +267,16 @@ data.findAll = function()
 {
     return  _.sortBy(data.cards, 'modified').reverse();
 };
-
+/*
+data.barristaTrans =function()
+{
+    var cards = data.findAll();
+    cards = _.uniq(cards,false, function(p) {
+    console.log(cards);
+    return cards;
+    });
+};
+*/
 data.get = function(id)
 {
     var gc = data.cards[id];

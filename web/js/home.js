@@ -14,7 +14,16 @@ function alphabet()
     for(var i=0;i<letters.length;i++)
     {
         var btn = $("<button></button>");
+        var currentletter = letters[i];
         btn.html(letters[i]);
+        
+        btn.click(function(e)
+        {
+           var letter = $(e.target).html();
+           var names = data.search(letter);
+           updateGCList(names); 
+        });
+
         container.append(btn);
     }
     return container;
@@ -29,3 +38,6 @@ function showHome()
     $("#name-buttons").append(letterButtons);
     showList();
 }
+
+
+//$("#name-buttons").click(function(){

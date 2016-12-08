@@ -77,6 +77,7 @@ $("#saveGC").click(function(){
 	data.save(card);
     showDetail();
 	console.log(data.findAll()[data.findAll().length-1]);
+	$("#gcForm").reset();
 
 });
 
@@ -93,6 +94,7 @@ $("#add").click(function(){
   
 	console.log(card);
 	showDetail();
+	$("#gcForm").reset();
 
 
 });
