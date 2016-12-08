@@ -22,12 +22,13 @@
 <body>
 
 <!-- header and navigation -->
-<img src="img/joyce_logo.gif" id="logo">
+
 
 <header>
+    <img src="img/joyce_logo.gif" id="logo">
     <h1>Gift Card Tracker</h1>
     <nav id="top-nav">
-        <button data-target="home">HOME</button>
+        <button data-target="home">FIND</button>
         <button data-target="detail">NEW CARD</button>
         <button data-target="reports">REPORTS</button>
         <button data-target="admin">ADMIN</button>
@@ -46,50 +47,40 @@
 
 
 <section id="detail" class="view">
-    <form id="$()">
-        <br>
-        First Name: <input type="text" id="firstName"><br>
-        <br>
-        Last Name: <input type="text" id="lastName"><br>
-        <br>
-        Phone Number: <input type="tel" id="phone"><br>
-        <br>
-        E-mail:  <input type="text" id="email"><br>
-        <br>
-        Barrista Initials: <input type="text" id="barrista" placeholder="initials">
-        <br>
 
-        <div>           
+    <form id="gcForm">
+        <div class="side1">
+            <div>First Name: <input type="text" id="firstName"></div>
+            <div>Last Name: <input type="text" id="lastName"></div>
+            <div>Phone Number: <input type="tel" id="phone"></div>                
+            <div>E-mail:  <input type="text" id="email"></div>
+            <div>Barrista Initials: <input type="text" id="barrista" placeholder="initials"></div>
+        </div>
 
-            <input type="number" id="balance" placeholder="$">
-            <button id="saveGC" type="button">save</button>      
-
-
+        <div id="side2"> 
+            <div>Amount: <input type="number" id="balance" placeholder="$">
+            <button id="saveGC" type="button">Save</button>
+        </div>
+       
 
         <div>    
-            <br>    
-            Add Amount:<input id="tx" placeholder="$">
+            Add Amount:<input id="tx" placeholder="$"> 
             <button id="add" type="button">Add</button>      
         </div>
     </form>
 
+    <div>
+       Gift Card Balance: <div id="newbalance">$</div>
+    </div>
 
-    <form>
-        <br>
-       Gift Card Balance: <div id="newbalance"> 
-         $</div>
-    </form>
 
     <div>
-        <br>
         <table>
             <thead>
                 <tr><th>Date</th><th>Amount</th><th>Type</th><th>Barista</th></tr>
             </thead>
             <tbody></tbody>
         </table>
-
-
     </div>
 </section>
 
