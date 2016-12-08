@@ -280,7 +280,7 @@ data.findLatestBarristas = function(numBarristas)
     var cards = data.findAll();
     var i = 0;
     var initials = {};
-    while(_.(initials).keys().length < numBarristas && i<cards.length)
+    while(_.keys(initials).length < numBarristas && i < cards.length)
     {
         var tx = cards[i].transactions;
         var bar = _.last(tx).barrista;
@@ -288,7 +288,7 @@ data.findLatestBarristas = function(numBarristas)
         i++;
     }
     return initials;
-}
+};
 
 data.findByName = function(name)
 {  
