@@ -267,20 +267,28 @@ data.findAll = function()
 {
     return  _.sortBy(data.cards, 'modified').reverse();
 };
-/*
-data.barristaTrans =function()
-{
-    var cards = data.findAll();
-    cards = _.uniq(cards,false, function(p) {
-    console.log(cards);
-    return cards;
-    });
-};
-*/
+
 data.get = function(id)
 {
     var gc = data.cards[id];
     return gc;
+};
+
+
+
+data.findLatestBarristas = function(numBarristas)
+{
+    var cards = data.findAll();
+    var i = 0;
+    var initials = {};
+    while(_.keys(initials).length < numBarristas && i < cards.length)
+    {
+        var tx = cards[i].transactions;
+        var bar = _.last(tx).barrista;
+        initials[bar] = bar;
+        i++;
+    }
+    return initials;
 };
 
 

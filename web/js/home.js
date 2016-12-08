@@ -4,8 +4,6 @@
 
 function alphabet()
 {
-	console.log("alphabet");
-
     var container = $("<div id='letter-buttons'></div>");
     var letters = ["A","B","C","D","E","F","G","H",
     "I","J","K","L","M","N","O","P","Q","R",
@@ -15,7 +13,7 @@ function alphabet()
     {
         var btn = $("<button></button>");
         var currentletter = letters[i];
-        btn.html(letters[i]);
+        btn.html(currentletter);
         
         btn.click(function(e)
         {
