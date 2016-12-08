@@ -9,10 +9,18 @@
 
 function showList()
 {
-    var list = $("#list ul");
     var cards = data.findAll();
-    //cards = testData;
+    updateGCList(cards);
+
+}
+
+function updateGCList(cards)
+{
+    var list = $("#list ul");
     list.html("");
+    if(cards.length == 0)
+        list.html("<h3>No giftcards found</h3>");
+
     for(var i=0; i<cards.length; i++)
     {
         var item = $("<li></li>");
@@ -23,8 +31,6 @@ function showList()
         item.append(link);
         list.append(item);
     }
-
-
 }
 
 $('.name-link').click(function(e) {
