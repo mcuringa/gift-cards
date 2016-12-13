@@ -34,8 +34,9 @@ function showDetail()
 		row += td("$" +card.transactions[i].amt);
   		row += td(card.transactions[i].type);
   		row += td(card.transactions[i].barrista);
-  
+  	
   		table.prepend($(row));
+
 	}
 }
 
@@ -109,3 +110,15 @@ $("#add").click(function()
 	$("#gcForm").reset();
 
 });
+var OSName="";
+if (navigator.appVersion.indexOf("Win")!=-1) OSName="Windows";
+if (navigator.appVersion.indexOf("Mac")!=-1) OSName="MacOS";
+if (navigator.appVersion.indexOf("X11")!=-1) OSName="UNIX";
+if (navigator.appVersion.indexOf("Linux")!=-1) OSName="Linux";
+if (navigator.userAgent.indexOf("Android")!=-1)
+OSName="Android";
+if (navigator.userAgent.indexOf("iPhone")!=-1 ||
+    navigator.userAgent.indexOf("iPod")!=-1 ||
+    navigator.userAgent.indexOf("iPad")!=-1)
+OSName="IOS"
+$('body').addClass(OSName);
