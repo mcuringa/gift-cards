@@ -9,21 +9,15 @@
     <meta name="author" content="kaiwilliams">
     <meta name="author" content="ATC">
     <meta name="author" content="ant">
-
     <title>JBS Giftcard Tracker</title>
     <script src="js/underscore.js" charset="utf-8"></script>
     <script src="js/jquery-3.1.0.js" charset="utf-8"></script>
     <script src="js/underscore.js" charset="utf-8"></script>
     <script src="https://apis.google.com/js/client.js"></script>
     <link href="css/main.css" type="text/css" rel="stylesheet">
-
 </head>
-
 <body>
-
 <!-- header and navigation -->
-
-
 <header>
     <img src="img/joyce_logo.gif" id="logo">
     <h1>Gift Card Tracker</h1>
@@ -34,20 +28,13 @@
         <button data-target="admin">ADMIN</button>
     </nav>
 </header>
-
-
 <!-- the dynamic section of our application -->
 <section id="home" class="view">
-
     <div id="name-buttons"></div>
-
     <div id="list"><ul></ul></div>
     
 </section>
-
-
 <section id="detail" class="view">
-
     <form id="gcForm">
         <div class="side1">
             <div>First Name: <input type="text" id="firstName"></div>
@@ -55,25 +42,23 @@
             <div>Phone Number: <input type="tel" id="phone"></div>                
             <div>E-mail:  <input type="text" id="email"></div>
             <div>Barrista Initials: <input type="text" id="barrista" placeholder="initials"></div>
-        </div>
-
-        <div id="side2"> 
             <div>Amount: <input type="number" id="balance" placeholder="$">
-            <button id="saveGC" type="button">Save</button>
+            <button id="saveGC" type="button">Save</button> </div>
+        </div>
+        <div id="side2"> 
+           
+            <div>    
+            Add Amount:<input id="tx" placeholder="$"> 
+            <button id="add" type="button">Add</button>
+            <div>Barrista Initials: <input type="text" id="barrista" placeholder="initials"></div>      
+        </div>
         </div>
        
-
-        <div>    
-            Add Amount:<input id="tx" placeholder="$"> 
-            <button id="add" type="button">Add</button>      
-        </div>
+       
     </form>
-
     <div>
        Gift Card Balance: <div id="newbalance">$</div>
     </div>
-
-
     <div>
         <table>
             <thead>
@@ -83,10 +68,8 @@
         </table>
     </div>
 </section>
-
 <section id="edit" class="view"></section>
 <section id="admin" class="view"></section>
-
 <div id="authorize-div" style="display: none">
   <span>Authorize access to Google Sheets API</span>
   <!--Button for the user to click to initiate auth sequence -->
@@ -95,19 +78,12 @@
   </button>
 </div>
 <pre id="output"></pre>
-
-
 <!-- the scripts -->
 <script src="./js/data.js" charset="utf-8"></script>
-
 <script src="./js/home.js" charset="utf-8"></script>
 <script src="./js/list.js" charset="utf-8"></script>
 <script src="./js/detail.js" charset="utf-8"></script>
 <script src="./js/admin.js" charset="utf-8"></script>
-
 <script src="./js/cards.js" charset="utf-8"></script>
-
-
 </body>
-
 </html>

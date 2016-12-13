@@ -1,4 +1,4 @@
-body
+ body
 {
 	background: #C0E788;
 	color: #664740;
@@ -90,17 +90,21 @@ h1
 
 #detail
 {
-	background-color: white;
 	margin: 20px auto 20px auto;
 	font-size: 25px;
-	
+	height:200px;
 }
 
-.side1, .side2
+.side1
 {
 	float: left;
 }
 
+.side2
+{
+	float: right;
+	padding: 2cm;
+}
 table, th, td
 {
 	border: 1px solid black;
@@ -111,3 +115,4 @@ table
 {
 	border-collapse: collapse;
 }
+
