@@ -33,12 +33,16 @@ h1
 	margin-right: 5px;
 }
 
+#top-nav
+{
+	background: #8ba566;
+}
+
 #top-nav button
 {
 	height: 35px;
 	border-radius: 12px;
 }
-
 
 #name-buttons button
 {
@@ -71,7 +75,7 @@ h1
 #list
 {
 	position: absolute;
-	right: 150px;
+	right: 0;
 }
 
 .view
