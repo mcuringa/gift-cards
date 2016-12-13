@@ -27,6 +27,16 @@ function updateGCList(cards)
         var link = $('<button class="name-link" data-id=""></button>');
 
         link.data("id", cards[i].id);
+        link.click(function(e)
+        {
+            console.log("clicking name");
+           var id = Number( $(e.target).data("id") );
+           console.log(id);
+           var card = data.get(id);
+           console.log(cards);
+           data.sesion.card = card;
+           showView("edit");
+        });
         link.html(cards[i].firstName + " " + cards[i].lastName + " $" + cards[i].balance);
         item.append(link);
         list.append(item);
