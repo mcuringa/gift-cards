@@ -1,4 +1,4 @@
-body
+ body
 {
 	background: #C0E788;
 	color: #664740;
@@ -86,14 +86,9 @@ h1
 
 #detail
 {
-	background-color: white;
 	margin: 20px auto 20px auto;
 	font-size: 25px;
-<<<<<<< HEAD
-=======
 	height:200px;
-	
->>>>>>> 9ca4c940d351676f991e222aa91f7d6e60cbe0ba
 }
 
 .side1
