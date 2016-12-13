@@ -2,7 +2,7 @@
 {
 	background: #C0E788;
 	color: #664740;
-	font-family: Cochin, Georgia, "Times New Roman", Times, serif;
+	font-family: 'Heebo', sans-serif;
 	max-width: 1024px;
 }
 
@@ -12,10 +12,14 @@ h1
 	float: left;
 	margin: 0;
 	margin-right: 5px;
-
 }
 
-#home
+button
+{
+	border-style: none;
+}
+
+section#home
 {
 	margin-top: 5%;
 }
@@ -23,7 +27,7 @@ h1
 #name-button
 {
 	color: #3F7B1D;
-	font-family: Cochin, Georgia, "Times New Roman", Times, serif;
+	font-family: 'Heebo', sans-serif;
 }
 
 #logo
@@ -33,15 +37,11 @@ h1
 	margin-right: 5px;
 }
 
-#top-nav
-{
-	background: #8ba566;
-}
-
 #top-nav button
 {
 	height: 35px;
 	border-radius: 12px;
+	font-family: 'Heebo', sans-serif;
 }
 
 #name-buttons button
@@ -49,14 +49,15 @@ h1
 	width: 150px;
 	line-height: 3em;
 	margin: 5px;
+	font-family: 'Heebo', sans-serif;
 }
 
 #name-buttons
 {
-	width: 40%;	
-	position: absolute;
-	left: 0px;
+	width: 55%;	
+	float: left;
 	text-align: center;
+	background: white;
 }
 
 #list li

@@ -18,6 +18,8 @@ function updateGCList(cards)
 {
     var list = $("#list ul");
     list.html("");
+    console.log("cards.length:");
+    console.log(cards.length);
     if(cards.length == 0)
         list.html("<h3>No giftcards found</h3>");
 
