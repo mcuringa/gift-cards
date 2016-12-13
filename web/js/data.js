@@ -275,6 +275,23 @@ data.get = function(id)
 };
 
 
+
+data.findLatestBarristas = function(numBarristas)
+{
+    var cards = data.findAll();
+    var i = 0;
+    var initials = {};
+    while(_.keys(initials).length < numBarristas && i < cards.length)
+    {
+        var tx = cards[i].transactions;
+        var bar = _.last(tx).barrista;
+        initials[bar] = bar;
+        i++;
+    }
+    return initials;
+};
+
+
 data.findByName = function(name)
 {  
     name = name.toLowerCase();

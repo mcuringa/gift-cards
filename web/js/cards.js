@@ -18,6 +18,10 @@ function showView(id)
     		showList();
     		break;
         case "detail":
+            // if they click "new card"
+            // we need to create a new card 
+            // in session for the user
+            data.session.card = new GiftCard();
             showDetail();
             break;
         case "admin":

@@ -9,23 +9,38 @@
 
 function showList()
 {
-    var list = $("#list ul");
     var cards = data.findAll();
-    //cards = testData;
+    updateGCList(cards);
+
+}
+
+function updateGCList(cards)
+{
+    var list = $("#list ul");
     list.html("");
+    if(cards.length == 0)
+        list.html("<h3>No giftcards found</h3>");
+
     for(var i=0; i<cards.length; i++)
     {
         var item = $("<li></li>");
         var link = $('<button class="name-link" data-id=""></button>');
 
         link.data("id", cards[i].id);
+        link.click(function(e)
+        {
+            console.log("clicking name");
+           var id = Number( $(e.target).data("id") );
+           console.log(id);
+           var card = data.get(id);
+           console.log(cards);
+           data.sesion.card = card;
+           showView("edit");
+        });
         link.html(cards[i].firstName + " " + cards[i].lastName + " $" + cards[i].balance);
         item.append(link);
         list.append(item);
     }
-
-
-}
 
 $('.name-link').click(function(e) {
 
@@ -37,6 +52,6 @@ $('.name-link').click(function(e) {
     //look up that giftcard
     var card = data.get(id);
     data.session.card = card;
-    showView("detail");
+    showView("id");
 
 });

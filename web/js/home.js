@@ -4,8 +4,6 @@
 
 function alphabet()
 {
-	console.log("alphabet");
-
     var container = $("<div id='letter-buttons'></div>");
     var letters = ["A","B","C","D","E","F","G","H",
     "I","J","K","L","M","N","O","P","Q","R",
@@ -14,7 +12,16 @@ function alphabet()
     for(var i=0;i<letters.length;i++)
     {
         var btn = $("<button></button>");
-        btn.html(letters[i]);
+        var currentletter = letters[i];
+        btn.html(currentletter);
+        
+        btn.click(function(e)
+        {
+           var letter = $(e.target).html();
+           var names = data.search(letter);
+           updateGCList(names); 
+        });
+
         container.append(btn);
     }
     return container;
@@ -29,3 +36,6 @@ function showHome()
     $("#name-buttons").append(letterButtons);
     showList();
 }
+
+
+//$("#name-buttons").click(function(){

@@ -6,34 +6,26 @@
  * - and to add transactsions
  */
 function showDetail()
+
 { 	
-    
+
     if(!data.session["card"])
     {
         data.session["card"] = new GiftCard();
-    	console.log("aaa");
     }
+
 	var card = data.session.card;
-    
-    
-    console.log(card.firstName);
-  
-	$("#firstName").val(card.firstName);
-
-	$("#lastName").val(card.lastName);
-	console.log("phone: " + card.phone);
-	$("#phone").val(card.phone);
-
-	$("#email").val(card.email);
-
+    $("#firstName").val(card.firstName);
+    $("#lastName").val(card.lastName);
+    $("#phone").val(card.phone);
+    $("#email").val(card.email);
 	$("#newbalance").html(card.balance);
 	$("#barrista").val(card.barrista);
-
+    $("#balance").html(card.balance);
 
 	var table = $("#detail tbody");
 	table.html("");
 	for(var i=0; i<card.transactions.length; i++)
-
 	{
 
 		//some html code to add a tx to a list or table
@@ -45,12 +37,11 @@ function showDetail()
   
   		table.prepend($(row));
 	}
-
 }
 
 function td(cell)
 {
-	return "<td>" + cell + "</td>";
+    return "<td>" + cell + "</td>";
 }
 
 $("#saveGC").click(function(){
@@ -76,11 +67,33 @@ $("#saveGC").click(function(){
 	data.session.card = card;
 	data.save(card);
     showDetail();
-	console.log(data.findAll()[data.findAll().length-1]);
+	$("#gcForm").reset();
 
+    
+    var card = new GiftCard();
+
+//set some properties
+    card.firstName= $("#firstName").val();
+    card.lastName = $("#lastName").val();
+    card.phone = $("#phone").val(); 
+    card.email= $("#email").val();
+    card.barrista=$("#barrista").val();
+    if(card.id == 0)
+    {
+        var amt = Number($("#balance").val());
+        var tx = new Transaction(amt, "initial", "AU");
+        card.addTransaction(tx);
+        data.session.card = card;
+    }
+
+    //save it to the (local) datase
+    data.save(card);
+    showDetail();
 });
 
-$("#add").click(function(){
+
+$("#add").click(function()
+{
 	
 	var card = data.session.card;
 	var barrista= $("#barrista").val();
@@ -93,6 +106,6 @@ $("#add").click(function(){
   
 	console.log(card);
 	showDetail();
-
+	$("#gcForm").reset();
 
 });
