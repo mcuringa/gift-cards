@@ -41,7 +41,6 @@ function updateGCList(cards)
         item.append(link);
         list.append(item);
     }
-}
 
 $('.name-link').click(function(e) {
 
