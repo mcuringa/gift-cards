@@ -36,25 +36,14 @@ function updateGCList(cards)
            console.log(id);
            var card = data.get(id);
            console.log(cards);
-           data.sesion.card = card;
+           data.session.card = card;
            showView("edit");
         });
         link.html(cards[i].firstName + " " + cards[i].lastName + " $" + cards[i].balance);
         item.append(link);
         list.append(item);
     }
+}    
 
-$('.name-link').click(function(e) {
 
-    console.log("#clicking a name");
-    var list= event.target;
-    console.log(list);
-    var id = Number( $(list).data("id") );
-    
 
-    //look up that giftcard
-    var card = data.get(id);
-    data.session.card = card;
-    showView("id");
-
-});
