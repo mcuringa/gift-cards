@@ -56,3 +56,4 @@ $('.name-link').click(function(e) {
     showView("id");
 
 });
+}
