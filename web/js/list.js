@@ -54,12 +54,5 @@ $('.name-link').click(function(e) {
     var card = data.get(id);
     data.session.card = card;
     showView("id");
-<<<<<<< HEAD
-   
-    });
-}
-=======
 
-});
-}
->>>>>>> d92dcb92610e0b913086a6ec5847ec1a6b054a16
+
