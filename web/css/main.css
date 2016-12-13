@@ -89,14 +89,18 @@ h1
 	background-color: white;
 	margin: 20px auto 20px auto;
 	font-size: 25px;
-	
 }
 
-.side1, .side2
+.side1
 {
 	float: left;
 }
 
+.side2
+{
+	float: right;
+	padding: 2cm;
+}
 table, th, td
 {
 	border: 1px solid black;
