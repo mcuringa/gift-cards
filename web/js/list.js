@@ -18,8 +18,6 @@ function updateGCList(cards)
 {
     var list = $("#list ul");
     list.html("");
-    console.log("cards.length:");
-    console.log(cards.length);
     if(cards.length == 0)
         list.html("<h3>No giftcards found</h3>");
 
@@ -35,7 +33,7 @@ function updateGCList(cards)
            var id = Number( $(e.target).data("id") );
            console.log(id);
            var card = data.get(id);
-           console.log(cards);
+           console.log(card);
            data.session.card = card;
            showView("edit");
         });
@@ -43,7 +41,8 @@ function updateGCList(cards)
         item.append(link);
         list.append(item);
     }
-}    
+}       
+    
 
 
 
