@@ -1,3 +1,5 @@
+ /*-----------------------------------------------Elements*/
+
  body
 {
 	background: #C0E788;
@@ -17,17 +19,27 @@ h1
 button
 {
 	border-style: none;
+	cursor: pointer;
+	font-family: 'Heebo', sans-serif;
 }
 
-section#home
+table, th, td
+{
+	border: 1px solid black;
+	margin: auto;
+}
+
+table
+{
+	border-collapse: collapse;
+	background: white;
+}
+
+/*-----------------------------------------------IDs*/
+
+#home
 {
 	margin-top: 5%;
-}
-
-#name-button
-{
-	color: #3F7B1D;
-	font-family: 'Heebo', sans-serif;
 }
 
 #logo
@@ -44,6 +56,15 @@ section#home
 	font-family: 'Heebo', sans-serif;
 }
 
+#name-buttons
+{
+	width: 55%;	
+	float: left;
+	text-align: center;
+	color: #3F7B1D;
+	font-family: 'Heebo', sans-serif;
+}
+
 #name-buttons button
 {
 	width: 150px;
@@ -52,10 +73,10 @@ section#home
 	font-family: 'Heebo', sans-serif;
 }
 
-#name-buttons
+#list
 {
-	width: 55%;	
-	float: left;
+	float: right;
+	width: 45%;
 	text-align: center;
 	background: white;
 }
@@ -71,13 +92,18 @@ section#home
 	width: 250px;
 	line-height: 3em;
 	margin: 5px;
+	background: transparent;
+	font-size: 12px;
 }
 
-#list
+#detail
 {
-	position: absolute;
-	right: 0;
+	margin: 20px auto 20px auto;
+	font-size: 25px;
+	height:200px;
 }
+
+/*-----------------------------------------------Classes*/
 
 .view
 {
@@ -87,13 +113,6 @@ section#home
 .hidden
 {
 	display: none;
-}
-
-#detail
-{
-	margin: 20px auto 20px auto;
-	font-size: 25px;
-	height:200px;
 }
 
 .side1
@@ -106,14 +125,3 @@ section#home
 	float: right;
 	padding: 2cm;
 }
-table, th, td
-{
-	border: 1px solid black;
-	margin: auto;
-}
-
-table
-{
-	border-collapse: collapse;
-}
-
