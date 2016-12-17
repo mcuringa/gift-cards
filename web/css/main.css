@@ -105,6 +105,21 @@ table
 	height:auto;
 	background-color: white;
 }
+#saveGC
+{
+	display:block;
+	font-size:15px;
+	border-radius:10px;
+	width: 100%;
+	margin-top: 1em;
+}
+
+#add{
+	font-size:15px;
+	border-radius:10px;
+	width:40%;
+	margin-bottom:1em;
+}
 
 /*-----------------------------------------------Classes*/
 
