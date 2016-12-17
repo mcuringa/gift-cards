@@ -30,7 +30,7 @@ function showDetail()
 
 		//some html code to add a tx to a list or table
 		var row = "<tr>";
-		row += td(card.created);
+		row += td(card.transactions[i].created);
 		row += td("$" +card.transactions[i].amt);
   		row += td(card.transactions[i].type);
   		row += td(card.transactions[i].barrista);
@@ -62,6 +62,7 @@ $("#saveGC").click(function(){
 		var amt = Number($("#balance").val());
 		var barrista= $("#barrista").val();
 		var tx = new Transaction(amt, "initial", barrista);
+		tx.created = dateFmt(tx.created);
 		card.addTransaction(tx);
 	}
 
@@ -70,26 +71,6 @@ $("#saveGC").click(function(){
     showDetail();
 	$("#gcForm").reset();
 
-    
-    var card = new GiftCard();
-
-//set some properties
-    card.firstName= $("#firstName").val();
-    card.lastName = $("#lastName").val();
-    card.phone = $("#phone").val(); 
-    card.email= $("#email").val();
-    card.barrista=$("#barrista").val();
-    if(card.id == 0)
-    {
-        var amt = Number($("#balance").val());
-        var tx = new Transaction(amt, "initial", "AU");
-        card.addTransaction(tx);
-        data.session.card = card;
-    }
-
-    //save it to the (local) datase
-    data.save(card);
-    showDetail();
 });
 
 
@@ -101,6 +82,10 @@ $("#add").click(function()
 	var amt = Number($("#tx").val());
 
 	var tx = new Transaction(amt, "new amount", barrista);
+	tx.created = dateFmt(tx.created);
+	
+	console.log(tx.created);
+
 	card.addTransaction(tx);
 
 	data.save(card);
@@ -110,6 +95,27 @@ $("#add").click(function()
 	$("#gcForm").reset();
 
 });
+
+function dateFmt(d)
+
+{	
+    var mins = d.getMinutes();
+    
+    if(mins < 10)
+    {
+        mins = "0" + mins;
+    }
+    
+    var time = d.getHours() + ":" + mins;
+    var day = d.getMonth() + "-" + d.getDay() + "-" + d.getFullYear();
+    
+    return  day + " " + time;
+
+	
+}
+
+
+
 var OSName="";
 if (navigator.appVersion.indexOf("Win")!=-1) OSName="Windows";
 if (navigator.appVersion.indexOf("Mac")!=-1) OSName="MacOS";
