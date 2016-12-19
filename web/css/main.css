@@ -37,6 +37,15 @@ table
 	margin-top:2em;
 	margin-left:1em;
 }
+label
+{
+       display: block;
+       float: left;
+       margin-right: 0.5em;
+       text-align: right;
+       width: 200px;
+
+}
 
 /*-----------------------------------------------IDs*/
 
