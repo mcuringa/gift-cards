@@ -107,7 +107,7 @@ function dateFmt(d)
     }
     
     var time = d.getHours() + ":" + mins;
-    var day = d.getMonth() + "-" + d.getDay() + "-" + d.getFullYear();
+    var day = (d.getMonth()+1 )+ "-" + d.getDate() + "-" + d.getFullYear();
     
     return  day + " " + time;
 
